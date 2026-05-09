@@ -91,13 +91,17 @@
     .url-badge .url-text { font-size:.72rem; color:rgba(255,255,255,.85); font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .url-badge .url-dot { display:inline-block; width:6px; height:6px; background:#4ade80; border-radius:50%; margin-right:4px; animation:ripple 2s ease-out infinite; vertical-align:middle; }
 
-    .marquee-wrap { background:var(--dark); padding:.9rem 0; overflow:hidden; white-space:nowrap; }
-    .marquee-inner { display:inline-flex; animation:marquee 20s linear infinite; }
-    .marquee-inner:hover { animation-play-state:paused; }
-    .marquee-item { font-family:"Syne",sans-serif; font-size:.75rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.45); padding:0 2.5rem; transition:color .25s; }
-    .marquee-item:hover { color:var(--accent2); }
-    .marquee-item span { color:var(--accent2); margin-right:2.5rem; }
-    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    /* ── SKILL CONSTELLATION ── */
+    .constellation-wrap {
+      background: var(--dark);
+      position: relative;
+      height: 260px;
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    #cCanvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+    @media(max-width:600px){ .constellation-wrap{ height:200px; } }
 
     section { padding:7rem 5vw; }
     .section-head { display:flex; align-items:baseline; gap:1.2rem; margin-bottom:4rem; }
@@ -306,22 +310,203 @@
   </div>
 </section>
 
-<div class="marquee-wrap">
-  <div class="marquee-inner">
-    <span class="marquee-item">Web Development <span>✦</span></span>
-    <span class="marquee-item">React &amp; JavaScript <span>✦</span></span>
-    <span class="marquee-item">UI/UX Design <span>✦</span></span>
-    <span class="marquee-item">Nepal 🇳🇵 <span>✦</span></span>
-    <span class="marquee-item">NDIS &amp; Healthcare Apps <span>✦</span></span>
-    <span class="marquee-item">Full Stack <span>✦</span></span>
-    <span class="marquee-item">Web Development <span>✦</span></span>
-    <span class="marquee-item">React &amp; JavaScript <span>✦</span></span>
-    <span class="marquee-item">UI/UX Design <span>✦</span></span>
-    <span class="marquee-item">Nepal 🇳🇵 <span>✦</span></span>
-    <span class="marquee-item">NDIS &amp; Healthcare Apps <span>✦</span></span>
-    <span class="marquee-item">Full Stack <span>✦</span></span>
-  </div>
+<div class="constellation-wrap">
+  <canvas id="cCanvas"></canvas>
 </div>
+<script>
+(function(){
+  const canvas = document.getElementById('cCanvas');
+  const ctx    = canvas.getContext('2d');
+  const TEAL   = [14,127,110];
+  const VIOLET = [124,92,191];
+  const WHITE  = [255,255,255];
+
+  const SKILLS = [
+    { label:'React',          color:TEAL   },
+    { label:'Node.js',        color:WHITE  },
+    { label:'Python',         color:VIOLET },
+    { label:'Django',         color:TEAL   },
+    { label:'System Design',  color:VIOLET },
+    { label:'CI/CD',          color:WHITE  },
+    { label:'PostgreSQL',     color:TEAL   },
+    { label:'REST APIs',      color:WHITE  },
+    { label:'Mobile Dev',     color:VIOLET },
+    { label:'UI/UX',          color:TEAL   },
+    { label:'Healthcare',     color:VIOLET },
+    { label:'Full Stack',     color:WHITE  },
+  ];
+
+  let W, H, nodes = [], mouse = { x:-9999, y:-9999 };
+  const DPR = Math.min(window.devicePixelRatio||1, 2);
+  const CONNECT_DIST = 180;
+  const MOUSE_DIST   = 140;
+  const MOUSE_PUSH   = 55;
+
+  function resize(){
+    W = canvas.offsetWidth;
+    H = canvas.offsetHeight;
+    canvas.width  = W * DPR;
+    canvas.height = H * DPR;
+    ctx.scale(DPR, DPR);
+    init();
+  }
+
+  function rand(a,b){ return a + Math.random()*(b-a); }
+
+  function init(){
+    nodes = SKILLS.map((s, i) => {
+      const cols = Math.ceil(SKILLS.length / 2);
+      const col  = i % cols;
+      const row  = Math.floor(i / cols);
+      return {
+        label : s.label,
+        color : s.color,
+        x     : rand(W*.06, W*.94),
+        y     : rand(H*.12, H*.88),
+        vx    : rand(-.28, .28),
+        vy    : rand(-.18, .18),
+        r     : rand(2.8, 4.2),
+        pulse : rand(0, Math.PI*2),
+        hovered: false,
+      };
+    });
+  }
+
+  function hexAlpha(rgb, a){
+    return `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`;
+  }
+
+  function drawNode(n){
+    const pr = n.r + Math.sin(n.pulse) * 1.2;   // pulsing radius
+
+    /* glow ring */
+    const g = ctx.createRadialGradient(n.x,n.y,0, n.x,n.y, pr*9);
+    g.addColorStop(0, hexAlpha(n.color, n.hovered ? .25 : .10));
+    g.addColorStop(1, hexAlpha(n.color, 0));
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, pr*9, 0, Math.PI*2);
+    ctx.fillStyle = g;
+    ctx.fill();
+
+    /* core dot */
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, pr, 0, Math.PI*2);
+    ctx.fillStyle = hexAlpha(n.color, n.hovered ? 1 : .7);
+    ctx.fill();
+
+    /* label */
+    ctx.font = `${n.hovered ? '700' : '600'} ${n.hovered ? 11 : 10}px "Manrope",sans-serif`;
+    ctx.fillStyle = hexAlpha(n.color, n.hovered ? .95 : .45);
+    ctx.textAlign = 'center';
+    ctx.fillText(n.label, n.x, n.y - pr - 7);
+  }
+
+  function tick(){
+    ctx.clearRect(0, 0, W, H);
+
+    /* subtle scanline grid */
+    ctx.strokeStyle = 'rgba(255,255,255,.018)';
+    ctx.lineWidth = 1;
+    const step = 38;
+    for(let x=0; x<W; x+=step){ ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+    for(let y=0; y<H; y+=step){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+
+    /* move nodes */
+    nodes.forEach(n => {
+      n.pulse += .032;
+
+      /* mouse repulsion */
+      const dx = n.x - mouse.x;
+      const dy = n.y - mouse.y;
+      const d  = Math.sqrt(dx*dx + dy*dy);
+      if(d < MOUSE_DIST && d > 0){
+        const force = (MOUSE_DIST - d) / MOUSE_DIST;
+        n.vx += (dx/d) * force * 0.55;
+        n.vy += (dy/d) * force * 0.55;
+        n.hovered = d < 60;
+      } else {
+        n.hovered = false;
+      }
+
+      /* dampen & move */
+      n.vx *= .97;
+      n.vy *= .97;
+      n.x  += n.vx;
+      n.y  += n.vy;
+
+      /* bounce walls with padding */
+      const pad = 30;
+      if(n.x < pad)   { n.x = pad;   n.vx = Math.abs(n.vx)*.6; }
+      if(n.x > W-pad) { n.x = W-pad; n.vx = -Math.abs(n.vx)*.6; }
+      if(n.y < pad)   { n.y = pad;   n.vy = Math.abs(n.vy)*.6; }
+      if(n.y > H-pad) { n.y = H-pad; n.vy = -Math.abs(n.vy)*.6; }
+    });
+
+    /* draw connections */
+    for(let i=0; i<nodes.length; i++){
+      for(let j=i+1; j<nodes.length; j++){
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const d  = Math.sqrt(dx*dx + dy*dy);
+        if(d < CONNECT_DIST){
+          const alpha = (1 - d/CONNECT_DIST) * .28;
+          /* pick color blend: if same color family use that, else white */
+          const sameColor = a.color === b.color;
+          const lineColor = sameColor ? a.color : WHITE;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = hexAlpha(lineColor, alpha);
+          ctx.lineWidth = (1 - d/CONNECT_DIST) * 1.4;
+          ctx.stroke();
+        }
+      }
+    }
+
+    /* draw mouse connector lines */
+    nodes.forEach(n => {
+      const dx = n.x - mouse.x, dy = n.y - mouse.y;
+      const d  = Math.sqrt(dx*dx + dy*dy);
+      if(d < MOUSE_DIST){
+        const alpha = (1 - d/MOUSE_DIST) * .5;
+        ctx.beginPath();
+        ctx.moveTo(mouse.x, mouse.y);
+        ctx.lineTo(n.x, n.y);
+        ctx.strokeStyle = hexAlpha(n.color, alpha);
+        ctx.lineWidth = .8;
+        ctx.stroke();
+      }
+    });
+
+    /* mouse cursor dot */
+    if(mouse.x > 0 && mouse.x < W){
+      ctx.beginPath();
+      ctx.arc(mouse.x, mouse.y, 3, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(255,255,255,.18)';
+      ctx.fill();
+    }
+
+    /* draw nodes on top */
+    nodes.forEach(drawNode);
+
+    requestAnimationFrame(tick);
+  }
+
+  /* track mouse relative to canvas */
+  canvas.closest('.constellation-wrap').addEventListener('mousemove', e => {
+    const r = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - r.left;
+    mouse.y = e.clientY - r.top;
+  });
+  canvas.closest('.constellation-wrap').addEventListener('mouseleave', () => {
+    mouse.x = -9999; mouse.y = -9999;
+  });
+
+  window.addEventListener('resize', resize);
+  resize();
+  tick();
+})();
+</script>
 
 <section class="about" id="about">
   <div class="section-head reveal"><span class="section-num">01</span><h2 class="section-title">About Me</h2></div>
