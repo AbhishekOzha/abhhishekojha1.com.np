@@ -4,533 +4,707 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Abhishek Ojha — Full Stack Developer</title>
-  <meta name="description" content="Abhishek Ojha — Full Stack Developer from Biratnagar, Nepal. Building production-grade digital products."/>
+  <meta name="description" content="Abhishek Ojha — Full Stack Developer from Biratnagar, Nepal. A journey from origin to now."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
-<body class="is-loading">
+<body>
 
-<!-- ═══════════════════════════════════════════
-     PRELOADER
-═══════════════════════════════════════════ -->
-<div id="loader" aria-hidden="true">
-  <canvas id="ld-canvas"></canvas>
-  <div class="ld-content">
-    <img src="assets/logo.jpg" alt="" class="ld-logo" width="56" height="56"/>
-    <div class="ld-bar-wrap"><div class="ld-bar" id="ldBar"></div></div>
-    <p class="ld-name">ABHISHEK OJHA</p>
-    <p class="ld-role">Full Stack Developer</p>
-    <p class="ld-pct" id="ldPct">0%</p>
-  </div>
-</div>
+<!-- ── CURSOR ── -->
+<div id="c-dot"   aria-hidden="true"></div>
+<div id="c-ring"  aria-hidden="true"></div>
 
-<!-- Custom cursor (desktop) -->
-<div id="c-dot"  aria-hidden="true"></div>
-<div id="c-ring" aria-hidden="true"></div>
-<div id="c-label" aria-hidden="true"></div>
+<!-- ── SCROLL PROGRESS ── -->
+<div id="prog-bar" aria-hidden="true"></div>
 
-<!-- Scroll progress bar -->
-<div id="prog-bar" role="progressbar" aria-label="Scroll progress"></div>
-
-<!-- ═══════════════════════════════════════════
+<!-- ════════════════════════════════════════════════
      NAV
-═══════════════════════════════════════════ -->
+════════════════════════════════════════════════ -->
 <nav id="nav" aria-label="Primary navigation">
-  <a href="#home" class="nav-logo" aria-label="Home">
-    <img src="assets/logo.jpg" alt="AO" width="30" height="30" class="nav-logo-img"/>
-    <span>AO<em>.</em></span>
+  <a href="#hero" class="nav-logo" aria-label="Go to top">
+    <img src="assets/logo.jpg" alt="" width="32" height="32" class="nav-avatar"/>
+    <span class="nav-name">AO<em>.</em></span>
   </a>
 
-  <ul class="nav-links" id="navLinks" role="list">
-    <li><a href="#about"    class="nl" role="listitem">About</a></li>
-    <li><a href="#skills"   class="nl" role="listitem">Skills</a></li>
-    <li><a href="#projects" class="nl" role="listitem">Work</a></li>
-    <li><a href="#contact"  class="nl" role="listitem">Contact</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#origin"  class="nl">Origin</a></li>
+    <li><a href="#journey" class="nl">Journey</a></li>
+    <li><a href="#present" class="nl">Present</a></li>
+    <li><a href="#work"    class="nl">Work</a></li>
+    <li><a href="#contact" class="nl">Contact</a></li>
   </ul>
 
-  <a href="mailto:abhishekojha.work@gmail.com" class="nav-hire mag-btn">
-    <span class="nav-hire-dot"></span>Hire Me
+  <a href="mailto:abhishekojha.work@gmail.com" class="nav-hire">
+    <span class="nh-pulse" aria-hidden="true"></span>Hire Me
   </a>
 
-  <button class="burger" id="burger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobMenu">
-    <span></span><span></span><span></span>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span>
   </button>
 </nav>
 
-<!-- Mobile overlay -->
-<div class="mob-overlay" id="mobMenu" aria-label="Mobile navigation">
-  <button class="mob-close" onclick="closeMob()" aria-label="Close menu">✕</button>
-  <nav class="mob-nav">
-    <a href="#about"    onclick="closeMob()">About</a>
-    <a href="#skills"   onclick="closeMob()">Skills</a>
-    <a href="#projects" onclick="closeMob()">Work</a>
-    <a href="#contact"  onclick="closeMob()">Contact</a>
-  </nav>
-  <p class="mob-loc">Biratnagar, Nepal · Open to Remote</p>
+<!-- Mobile menu -->
+<div class="mob-menu" id="mobMenu" aria-hidden="true">
+  <button class="mob-x" id="mobClose" aria-label="Close menu">&#10005;</button>
+  <a href="#origin"  onclick="closeMob()">Origin</a>
+  <a href="#journey" onclick="closeMob()">Journey</a>
+  <a href="#present" onclick="closeMob()">Present</a>
+  <a href="#work"    onclick="closeMob()">Work</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     HERO — CINEMATIC OPENING
-═══════════════════════════════════════════ -->
-<section id="home" class="hero" aria-label="Hero introduction">
+<!-- ════════════════════════════════════════════════
+     CHAPTER 0 — HERO (latest7 as opening image)
+════════════════════════════════════════════════ -->
+<section id="hero" class="ch-hero">
 
-  <!-- Layer 0: Deep space animated gradient -->
-  <div class="hero-deep" aria-hidden="true"></div>
-
-  <!-- Layer 1: Aurora light beams -->
-  <div class="hero-aurora" aria-hidden="true">
-    <div class="aurora-beam beam1"></div>
-    <div class="aurora-beam beam2"></div>
-    <div class="aurora-beam beam3"></div>
+  <!-- Full-bleed background photo with Ken Burns -->
+  <div class="hero-img-wrap" aria-hidden="true">
+    <img src="assets/latest7.jpeg" alt=""
+         class="hero-bg-img" width="1920" height="1080"
+         fetchpriority="high"/>
   </div>
 
-  <!-- Layer 2: Particle + constellation canvas -->
-  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <!-- Grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+  <!-- Dark gradient overlay -->
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <!-- Spotlight sweep -->
+  <div class="hero-spotlight" aria-hidden="true"></div>
 
-  <!-- Layer 3: Radial vignette + noise -->
-  <div class="hero-vignette" aria-hidden="true"></div>
-  <div class="hero-noise"    aria-hidden="true"></div>
+  <!-- Content -->
+  <div class="hero-content">
+    <p class="hero-eyebrow">Full Stack Developer · Biratnagar, Nepal</p>
 
-  <!-- Layer 4: Animated grid -->
-  <div class="hero-grid" aria-hidden="true"></div>
-
-  <!-- Layer 5: Floating glowing orbs -->
-  <div class="orb orb1" aria-hidden="true"></div>
-  <div class="orb orb2" aria-hidden="true"></div>
-  <div class="orb orb3" aria-hidden="true"></div>
-
-  <!-- Layer 6: Horizontal fog bands -->
-  <div class="fog fog-a" aria-hidden="true"></div>
-  <div class="fog fog-b" aria-hidden="true"></div>
-
-  <!-- Side typographic label -->
-  <div class="side-tag" aria-hidden="true">
-    <div class="st-text">FULL · STACK</div>
-    <div class="st-line"></div>
-    <div class="st-text">DEVELOPER</div>
-  </div>
-
-  <!-- Foreground content -->
-  <div class="hero-content" id="heroContent">
-
-    <div class="hero-chip" id="hChip" aria-label="Availability status">
-      <span class="chip-pulse" aria-hidden="true"></span>
-      <span>Available for Projects</span>
-    </div>
-
-    <h1 class="hero-h1" id="heroH1">
-      <div class="reveal-row" aria-hidden="true"><span class="reveal-inner">BUILDING</span></div>
-      <div class="reveal-row italic-row" aria-hidden="true"><span class="reveal-inner">Digital</span></div>
-      <div class="reveal-row" aria-hidden="true"><span class="reveal-inner">FUTURES</span></div>
-      <!-- Screen-reader only full text -->
-      <span class="sr-only">Building Digital Futures</span>
+    <h1 class="hero-title">
+      <span class="ht-line">A Story</span>
+      <span class="ht-line ht-italic">Written</span>
+      <span class="ht-line">In Code.</span>
     </h1>
 
-    <p class="hero-sub" id="hSub">
-      Full Stack Developer from <strong>Biratnagar, Nepal</strong> —<br>
-      crafting production-grade web &amp; mobile experiences.
+    <p class="hero-sub">
+      From small beginnings in Nepal to building production systems for global clients —<br>
+      this is the journey of <strong>Abhishek Ojha</strong>.
     </p>
 
-    <div class="hero-ctas" id="hCtas">
-      <a href="#projects" class="cta-primary mag-btn">
-        <span class="cta-bg" aria-hidden="true"></span>
-        <span class="cta-text">See My Work</span>
-        <svg class="cta-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <div class="hero-ctas">
+      <a href="#origin" class="btn-primary">
+        Begin the Story
+        <svg viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
+          <path d="M10 4v12M4 10l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
-      <a href="mailto:abhishekojha.work@gmail.com" class="cta-secondary mag-btn">
-        <span>Let's Talk ↗</span>
-      </a>
+      <a href="#work" class="btn-outline">See My Work</a>
     </div>
   </div>
 
-  <!-- Stats bar -->
-  <div class="hero-stats" id="hStats" aria-label="Career statistics">
-    <div class="hstat">
-      <div class="hstat-val"><span class="counter" data-target="3">0</span><span class="hstat-sym">+</span></div>
-      <div class="hstat-label">Years Exp</div>
-    </div>
+  <!-- Bottom stats strip -->
+  <div class="hero-stats">
+    <div class="hstat"><span class="hstat-n">3+</span><span class="hstat-l">Years Exp</span></div>
     <div class="hstat-div" aria-hidden="true"></div>
-    <div class="hstat">
-      <div class="hstat-val"><span class="counter" data-target="4">0</span><span class="hstat-sym">+</span></div>
-      <div class="hstat-label">Prod Apps</div>
-    </div>
+    <div class="hstat"><span class="hstat-n">4+</span><span class="hstat-l">Prod Apps</span></div>
     <div class="hstat-div" aria-hidden="true"></div>
-    <div class="hstat">
-      <div class="hstat-val"><span class="counter" data-target="50">0</span><span class="hstat-sym">+</span></div>
-      <div class="hstat-label">Projects</div>
-    </div>
+    <div class="hstat"><span class="hstat-n">50+</span><span class="hstat-l">Projects</span></div>
     <div class="hstat-div" aria-hidden="true"></div>
-    <div class="hstat">
-      <div class="hstat-val"><span>100</span><span class="hstat-sym">%</span></div>
-      <div class="hstat-label">Committed</div>
-    </div>
+    <div class="hstat"><span class="hstat-n">100%</span><span class="hstat-l">Committed</span></div>
   </div>
 
-  <!-- Scroll cue -->
-  <div class="scroll-cue" aria-hidden="true">
-    <div class="sc-line"></div>
-    <span>SCROLL TO EXPLORE</span>
+  <!-- Scroll nudge -->
+  <div class="scroll-nudge" aria-hidden="true">
+    <div class="sn-track"><div class="sn-dot"></div></div>
+    <span>Scroll</span>
   </div>
 
 </section>
 
-<!-- ═══════════════════════════════════════════
-     MARQUEE STRIP
-═══════════════════════════════════════════ -->
-<div class="marquee-wrap" aria-hidden="true">
-  <div class="marquee-track">
-    <span>React</span><em>✦</em><span>Django</span><em>✦</em><span>Python</span><em>✦</em>
-    <span>AWS</span><em>✦</em><span>PostgreSQL</span><em>✦</em><span>Node.js</span><em>✦</em>
-    <span>React Native</span><em>✦</em><span>Full Stack</span><em>✦</em><span>CI/CD</span><em>✦</em>
-    <span>Java</span><em>✦</em><span>Docker</span><em>✦</em><span>REST APIs</span><em>✦</em>
-    <!-- dup for seamless loop -->
-    <span>React</span><em>✦</em><span>Django</span><em>✦</em><span>Python</span><em>✦</em>
-    <span>AWS</span><em>✦</em><span>PostgreSQL</span><em>✦</em><span>Node.js</span><em>✦</em>
-    <span>React Native</span><em>✦</em><span>Full Stack</span><em>✦</em><span>CI/CD</span><em>✦</em>
-    <span>Java</span><em>✦</em><span>Docker</span><em>✦</em><span>REST APIs</span><em>✦</em>
+<!-- ════════════════════════════════════════════════
+     MARQUEE
+════════════════════════════════════════════════ -->
+<div class="marquee-band" aria-hidden="true">
+  <div class="mq-inner">
+    <span>React</span><em>✦</em>
+    <span>Django</span><em>✦</em>
+    <span>Python</span><em>✦</em>
+    <span>AWS</span><em>✦</em>
+    <span>PostgreSQL</span><em>✦</em>
+    <span>Node.js</span><em>✦</em>
+    <span>React Native</span><em>✦</em>
+    <span>Full Stack</span><em>✦</em>
+    <span>CI/CD</span><em>✦</em>
+    <span>Java</span><em>✦</em>
+    <span>Docker</span><em>✦</em>
+    <!-- dup -->
+    <span>React</span><em>✦</em>
+    <span>Django</span><em>✦</em>
+    <span>Python</span><em>✦</em>
+    <span>AWS</span><em>✦</em>
+    <span>PostgreSQL</span><em>✦</em>
+    <span>Node.js</span><em>✦</em>
+    <span>React Native</span><em>✦</em>
+    <span>Full Stack</span><em>✦</em>
+    <span>CI/CD</span><em>✦</em>
+    <span>Java</span><em>✦</em>
+    <span>Docker</span><em>✦</em>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     ABOUT
-═══════════════════════════════════════════ -->
-<section id="about" class="about" aria-label="About Abhishek Ojha">
-  <div class="about-bg-orb" aria-hidden="true"></div>
+<!-- ════════════════════════════════════════════════
+     CHAPTER I — ORIGIN (old4.jpeg)
+     The beginning: where it all started
+════════════════════════════════════════════════ -->
+<section id="origin" class="chapter ch-origin" aria-label="Chapter I — Origin">
 
+  <!-- Sticky photo side -->
+  <div class="ch-sticky-photo" aria-hidden="true">
+    <div class="csp-img-wrap">
+      <img src="assets/old4.jpeg" alt="Abhishek Ojha — Origin"
+           class="csp-img" loading="lazy"/>
+      <div class="csp-overlay"></div>
+      <div class="csp-grain grain"></div>
+    </div>
+    <!-- Floating chapter label -->
+    <div class="ch-label-float">
+      <span class="clf-num">I</span>
+      <span class="clf-title">Origin</span>
+    </div>
+  </div>
+
+  <!-- Scrolling text side -->
+  <div class="ch-text-side">
+    <div class="ch-text-inner">
+      <p class="ch-eyebrow">Chapter I · Biratnagar, Nepal</p>
+      <h2 class="ch-headline">
+        Every great story<br><em>starts somewhere.</em>
+      </h2>
+      <p class="ch-body">
+        Mine started in Biratnagar — a city in eastern Nepal
+        where technology felt distant but the hunger to build
+        was already burning.
+      </p>
+      <p class="ch-body">
+        Before the frameworks, before the deployments,
+        before the Australian clients — there was just
+        curiosity and a screen.
+      </p>
+      <p class="ch-body ch-quote">
+        "I didn't start with resources.<br>
+        I started with questions."
+      </p>
+      <div class="ch-meta">
+        <span>Biratnagar, Nepal</span>
+        <span>The Beginning</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════
+     CHAPTER II — GROWTH (old2.jpeg)
+     Learning, building, expanding
+════════════════════════════════════════════════ -->
+<section class="chapter ch-growth" aria-label="Chapter II — Growth">
+
+  <!-- Photo: RIGHT side for visual rhythm alternation -->
+  <div class="ch-text-side ch-text-left">
+    <div class="ch-text-inner">
+      <p class="ch-eyebrow">Chapter II · The Learning Years</p>
+      <h2 class="ch-headline">
+        Grinding through<br><em>every stack,</em><br>every bug.
+      </h2>
+      <p class="ch-body">
+        Python at midnight. React on weekends. Django forms
+        that broke in production at 2am. Every error message
+        was a teacher I didn't pay for.
+      </p>
+      <p class="ch-body">
+        This phase shaped the developer I became — someone who
+        reads the docs, understands the architecture, and ships
+        things that actually work.
+      </p>
+      <div class="ch-skill-pills">
+        <span>Python</span><span>Django</span>
+        <span>React</span><span>PostgreSQL</span>
+        <span>REST APIs</span>
+      </div>
+      <div class="ch-meta">
+        <span>2021 — 2022</span>
+        <span>Growth Phase</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ch-sticky-photo ch-photo-right" aria-hidden="true">
+    <div class="csp-img-wrap">
+      <img src="assets/old2.jpeg" alt="Abhishek Ojha — Growth"
+           class="csp-img" loading="lazy"/>
+      <div class="csp-overlay"></div>
+      <div class="csp-grain grain"></div>
+    </div>
+    <div class="ch-label-float clf-right">
+      <span class="clf-num">II</span>
+      <span class="clf-title">Growth</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════
+     CHAPTER III — LEARNING / TRANSITION (old1.jpeg)
+     Deepening craft
+════════════════════════════════════════════════ -->
+<section class="chapter ch-learning" aria-label="Chapter III — Becoming">
+
+  <div class="ch-sticky-photo" aria-hidden="true">
+    <div class="csp-img-wrap">
+      <img src="assets/old1.jpeg" alt="Abhishek Ojha — Becoming"
+           class="csp-img" loading="lazy"/>
+      <div class="csp-overlay"></div>
+      <div class="csp-grain grain"></div>
+    </div>
+    <div class="ch-label-float">
+      <span class="clf-num">III</span>
+      <span class="clf-title">Becoming</span>
+    </div>
+  </div>
+
+  <div class="ch-text-side">
+    <div class="ch-text-inner">
+      <p class="ch-eyebrow">Chapter III · Deepening the Craft</p>
+      <h2 class="ch-headline">
+        From following<br><em>tutorials,</em><br>to building systems.
+      </h2>
+      <p class="ch-body">
+        The transition happened quietly — somewhere between
+        understanding why code works and knowing how to make
+        it scale.
+      </p>
+      <p class="ch-body">
+        Cloud infrastructure. CI/CD pipelines. System design.
+        The gap between a developer and an engineer started closing.
+      </p>
+      <p class="ch-body ch-quote">
+        "Architecture is invisible until it breaks.<br>
+        I learned to build things that don't."
+      </p>
+      <div class="ch-skill-pills">
+        <span>AWS</span><span>Docker</span>
+        <span>CI/CD</span><span>System Design</span>
+        <span>Java</span>
+      </div>
+      <div class="ch-meta">
+        <span>2022 — 2023</span>
+        <span>Engineering Mindset</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════
+     CHAPTER IV — TURNING POINT (old3.jpeg)
+     Closing the old chapter, opening the new
+════════════════════════════════════════════════ -->
+<section class="chapter ch-turning" aria-label="Chapter IV — Turning Point">
+
+  <!-- Full-bleed photo with heavy overlay -->
+  <div class="ch-fullbleed-photo" aria-hidden="true">
+    <img src="assets/old3.jpeg" alt=""
+         class="ch-fb-img" loading="lazy"/>
+    <div class="ch-fb-overlay"></div>
+    <div class="grain ch-fb-grain"></div>
+  </div>
+
+  <!-- Centered overlay text -->
+  <div class="ch-fullbleed-text">
+    <div class="chft-inner">
+      <p class="ch-eyebrow chft-eyebrow">Chapter IV · The Turning Point</p>
+      <h2 class="chft-headline">
+        Some chapters<br><em>close so the</em><br>next can begin.
+      </h2>
+      <p class="chft-body">
+        This was the moment of clarity. The years of learning
+        distilled into a direction — build real things for real people,
+        across the world, from right here in Nepal.
+      </p>
+      <div class="chft-line" aria-hidden="true"></div>
+      <p class="chft-below">
+        What came next changed everything.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════
+     TRANSITION BREAK — between old and present
+════════════════════════════════════════════════ -->
+<div class="story-break" aria-hidden="true">
+  <div class="sb-line"></div>
+  <div class="sb-text">
+    <span>Then.</span>
+    <span class="sb-arrow">→</span>
+    <span>Now.</span>
+  </div>
+  <div class="sb-line"></div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     CHAPTER V — PRESENT (latest photos)
+     Stacked sticky full-screen photo sequence
+════════════════════════════════════════════════ -->
+<section id="present" class="ch-present-stack" aria-label="Chapter V — Present">
+
+  <!-- Frame 1: latest1 — Identity -->
+  <div class="ps-frame" id="psf1">
+    <div class="psf-img-wrap">
+      <img src="assets/latest1.jpeg" alt="Abhishek Ojha — Present Identity"
+           class="psf-img" loading="lazy"/>
+      <div class="psf-overlay"></div>
+      <div class="grain"></div>
+    </div>
+    <div class="psf-caption">
+      <span class="psf-num">V</span>
+      <div class="psf-text">
+        <h2 class="psf-title">Present.</h2>
+        <p>This is who I am now.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 2: latest2 — Confidence -->
+  <div class="ps-frame" id="psf2">
+    <div class="psf-img-wrap">
+      <img src="assets/latest2.jpeg" alt="Abhishek Ojha — Current"
+           class="psf-img" loading="lazy"/>
+      <div class="psf-overlay"></div>
+      <div class="grain"></div>
+    </div>
+    <div class="psf-caption psf-caption-right">
+      <span class="psf-num">—</span>
+      <div class="psf-text">
+        <h2 class="psf-title">Confident.</h2>
+        <p>Years of work made this possible.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 3: latest3 — Direction -->
+  <div class="ps-frame" id="psf3">
+    <div class="psf-img-wrap">
+      <img src="assets/latest3.jpeg" alt="Abhishek Ojha — Direction"
+           class="psf-img" loading="lazy"/>
+      <div class="psf-overlay"></div>
+      <div class="grain"></div>
+    </div>
+    <div class="psf-caption">
+      <span class="psf-num">—</span>
+      <div class="psf-text">
+        <h2 class="psf-title">Directed.</h2>
+        <p>Every line of code has a purpose.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════
+     LATEST GALLERY — Editorial grid (latest 4–7)
+════════════════════════════════════════════════ -->
+<section class="ch-gallery" aria-label="Recent moments">
   <div class="container">
-    <div class="sec-eyebrow reveal-up" data-delay="0">01 — About</div>
+    <p class="gal-eyebrow reveal-fade">The latest chapter</p>
+    <h2 class="gal-title reveal-fade" data-delay="0.1">Where I am<br><em>right now.</em></h2>
+  </div>
 
-    <div class="about-layout">
+  <div class="gallery-grid">
+    <div class="gg-item gg-large reveal-fade" data-delay="0">
+      <div class="gg-img-wrap">
+        <img src="assets/latest4.jpeg" alt="" loading="lazy" class="gg-img"/>
+      </div>
+      <div class="gg-caption">Full Stack · 2025</div>
+    </div>
+    <div class="gg-item reveal-fade" data-delay="0.08">
+      <div class="gg-img-wrap">
+        <img src="assets/latest5.jpeg" alt="" loading="lazy" class="gg-img"/>
+      </div>
+      <div class="gg-caption">Building · Nepal</div>
+    </div>
+    <div class="gg-item reveal-fade" data-delay="0.16">
+      <div class="gg-img-wrap">
+        <img src="assets/latest6.jpeg" alt="" loading="lazy" class="gg-img"/>
+      </div>
+      <div class="gg-caption">Shipping · 2025</div>
+    </div>
+    <div class="gg-item gg-wide reveal-fade" data-delay="0.1">
+      <div class="gg-img-wrap">
+        <img src="assets/latest7.jpeg" alt="" loading="lazy" class="gg-img"/>
+      </div>
+      <div class="gg-caption">Developer · Creator</div>
+    </div>
+  </div>
+</section>
 
-      <!-- Left: photo + big stat -->
-      <div class="about-visual">
-        <div class="about-photo-frame reveal-up" data-delay="0.1">
-          <img src="assets/logo.jpg" alt="Abhishek Ojha" class="about-photo" width="320" height="400" loading="lazy"/>
-          <div class="photo-glow" aria-hidden="true"></div>
-          <div class="photo-corner photo-corner-tl" aria-hidden="true"></div>
-          <div class="photo-corner photo-corner-br" aria-hidden="true"></div>
-        </div>
+<!-- ════════════════════════════════════════════════
+     CHAPTER VI — ABOUT (brief inline)
+════════════════════════════════════════════════ -->
+<section id="about" class="ch-about" aria-label="About Abhishek Ojha">
+  <div class="container">
+    <div class="about-split">
 
-        <div class="about-loc-tag reveal-up" data-delay="0.2">
-          <span class="loc-dot" aria-hidden="true"></span>
-          Biratnagar, Province No. 1, Nepal
+      <div class="about-img-col reveal-fade" data-delay="0">
+        <div class="about-img-frame">
+          <img src="assets/latest6.jpeg" alt="Abhishek Ojha"
+               loading="lazy" class="about-portrait"/>
+          <div class="aif-corner aif-tl" aria-hidden="true"></div>
+          <div class="aif-corner aif-br" aria-hidden="true"></div>
         </div>
       </div>
 
-      <!-- Right: text -->
-      <div class="about-text">
-        <h2 class="about-headline reveal-lines">
+      <div class="about-text-col">
+        <p class="ch-eyebrow reveal-fade" data-delay="0">The Developer</p>
+        <h2 class="ch-headline reveal-fade" data-delay="0.08">
           I build things<br><em>that actually</em><br>ship.
         </h2>
-
-        <p class="about-lead reveal-up" data-delay="0">
-          I'm <strong>Abhishek Ojha</strong> — a full-stack developer building production-grade
-          web &amp; mobile products. Real systems, real clients, real impact.
+        <p class="ch-body reveal-fade" data-delay="0.14">
+          I'm <strong>Abhishek Ojha</strong> — a full-stack developer from
+          <strong>Biratnagar, Province No. 1, Nepal</strong>. I build production-grade
+          web and mobile products that reach real users.
         </p>
-        <p class="about-body reveal-up" data-delay="0.08">
+        <p class="ch-body reveal-fade" data-delay="0.2">
           I've shipped across healthcare, fitness, and enterprise —
-          including an NDIS disability platform for Australian clients,
-          ShiftCare workforce integration, and cross-platform mobile fitness apps.
+          including NDIS disability platforms for Australian clients,
+          ShiftCare workforce integration, and cross-platform mobile apps.
         </p>
-        <p class="about-body reveal-up" data-delay="0.16">
-          I obsess over architecture, performance, and the details that turn
-          good software into great software.
-        </p>
-
-        <div class="about-tags reveal-up" data-delay="0.22">
+        <div class="about-pills reveal-fade" data-delay="0.26">
           <span>Open to Remote</span>
           <span>Freelance</span>
           <span>Full-Time</span>
-          <span>Nepal / Australia</span>
-        </div>
-
-        <div class="about-stats reveal-up" data-delay="0.3">
-          <div class="astat">
-            <span class="astat-n">3+</span>
-            <span class="astat-l">Years shipping</span>
-          </div>
-          <div class="astat">
-            <span class="astat-n">AU</span>
-            <span class="astat-l">Intl clients</span>
-          </div>
-          <div class="astat">
-            <span class="astat-n">∞</span>
-            <span class="astat-l">Code obsession</span>
-          </div>
+          <span>Nepal / Worldwide</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     SKILLS — Floating badge galaxy
-═══════════════════════════════════════════ -->
-<section id="skills" class="skills" aria-label="Skills and technologies">
-  <div class="skills-bg" aria-hidden="true"></div>
+<!-- ════════════════════════════════════════════════
+     CHAPTER VII — WORK / PROJECTS
+════════════════════════════════════════════════ -->
+<section id="work" class="ch-work" aria-label="Selected work">
+  <div class="work-bg" aria-hidden="true"></div>
 
   <div class="container">
-    <div class="sec-eyebrow reveal-up" data-delay="0">02 — Skills</div>
-    <h2 class="sec-title reveal-lines">What I<br><em>build with.</em></h2>
-
-    <!-- Skill categories as floating badge groups -->
-    <div class="skills-universe reveal-up" data-delay="0.1" aria-label="Skill categories">
-
-      <div class="skill-category" data-cat="Frontend">
-        <div class="scat-label">Frontend</div>
-        <div class="scat-badges">
-          <span class="sbadge sb-hi">React</span>
-          <span class="sbadge">JavaScript</span>
-          <span class="sbadge">HTML/CSS</span>
-          <span class="sbadge">React Native</span>
-          <span class="sbadge sb-hi">Angular</span>
-        </div>
-      </div>
-
-      <div class="skill-category" data-cat="Backend">
-        <div class="scat-label">Backend</div>
-        <div class="scat-badges">
-          <span class="sbadge sb-hi">Python</span>
-          <span class="sbadge sb-hi">Django</span>
-          <span class="sbadge">Node.js</span>
-          <span class="sbadge">Java</span>
-          <span class="sbadge">REST APIs</span>
-        </div>
-      </div>
-
-      <div class="skill-category" data-cat="Data">
-        <div class="scat-label">Data &amp; Cloud</div>
-        <div class="scat-badges">
-          <span class="sbadge sb-hi">PostgreSQL</span>
-          <span class="sbadge">MySQL</span>
-          <span class="sbadge">Redis</span>
-          <span class="sbadge sb-hi">AWS</span>
-          <span class="sbadge">S3 / EC2</span>
-        </div>
-      </div>
-
-      <div class="skill-category" data-cat="Tools">
-        <div class="scat-label">Tools &amp; DevOps</div>
-        <div class="scat-badges">
-          <span class="sbadge sb-hi">Docker</span>
-          <span class="sbadge">Git / GitHub</span>
-          <span class="sbadge">CI/CD</span>
-          <span class="sbadge">JotForm</span>
-          <span class="sbadge">ShiftCare</span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Proficiency bars -->
-    <div class="skill-bars reveal-up" data-delay="0.15">
-      <div class="sbar-row" data-pct="88">
-        <span class="sbar-nm">Web Development</span>
-        <div class="sbar-track"><div class="sbar-fill"></div></div>
-        <span class="sbar-pct">88%</span>
-      </div>
-      <div class="sbar-row" data-pct="83">
-        <span class="sbar-nm">Python / Django</span>
-        <div class="sbar-track"><div class="sbar-fill"></div></div>
-        <span class="sbar-pct">83%</span>
-      </div>
-      <div class="sbar-row" data-pct="80">
-        <span class="sbar-nm">React &amp; Mobile</span>
-        <div class="sbar-track"><div class="sbar-fill"></div></div>
-        <span class="sbar-pct">80%</span>
-      </div>
-      <div class="sbar-row" data-pct="76">
-        <span class="sbar-nm">AWS &amp; Cloud</span>
-        <div class="sbar-track"><div class="sbar-fill"></div></div>
-        <span class="sbar-pct">76%</span>
-      </div>
-      <div class="sbar-row" data-pct="90">
-        <span class="sbar-nm">DevOps &amp; CI/CD</span>
-        <div class="sbar-track"><div class="sbar-fill"></div></div>
-        <span class="sbar-pct">90%</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     PROJECTS
-═══════════════════════════════════════════ -->
-<section id="projects" class="projects" aria-label="Selected projects">
-  <div class="projects-bg" aria-hidden="true"></div>
-
-  <div class="container">
-    <div class="sec-eyebrow reveal-up" data-delay="0">03 — Work</div>
-    <h2 class="sec-title reveal-lines">Selected<br><em>Projects.</em></h2>
+    <p class="ch-eyebrow reveal-fade" data-delay="0">Chapter VII · Selected Work</p>
+    <h2 class="ch-headline reveal-fade" data-delay="0.08">
+      Systems I've<br><em>shipped to production.</em>
+    </h2>
   </div>
 
-  <!-- Featured — full bleed cinematic card -->
-  <div class="feat-project reveal-up" data-delay="0.05">
-    <div class="fp-art" aria-hidden="true">
-      <div class="fp-art-glow"></div>
-      <div class="fp-browser">
-        <div class="fp-bar">
-          <span class="fp-dot fd-r"></span>
-          <span class="fp-dot fd-y"></span>
-          <span class="fp-dot fd-g"></span>
-          <span class="fp-url">empowerliving.com.au</span>
+  <!-- Project 01 — Featured full-bleed panel -->
+  <div class="work-featured reveal-fade" data-delay="0.05">
+    <div class="wf-art" aria-hidden="true">
+      <div class="wf-browser">
+        <div class="wfb-bar">
+          <span class="wfb-dot dr"></span>
+          <span class="wfb-dot dy"></span>
+          <span class="wfb-dot dg"></span>
+          <span class="wfb-url">empowerliving.com.au</span>
         </div>
-        <div class="fp-screen">
-          <div class="fp-sidebar"></div>
-          <div class="fp-body">
-            <div class="fp-row fp-row-acc w-70"></div>
-            <div class="fp-row w-50"></div>
-            <div class="fp-kpi-row">
-              <div class="fp-kpi"><b>124</b><small>Participants</small></div>
-              <div class="fp-kpi"><b>98%</b><small>Uptime</small></div>
-              <div class="fp-kpi"><b>2.1k</b><small>Bookings</small></div>
+        <div class="wfb-screen">
+          <div class="wfbs-sidebar"></div>
+          <div class="wfbs-body">
+            <div class="wfbs-row row-acc w70"></div>
+            <div class="wfbs-row w50"></div>
+            <div class="wfbs-kpis">
+              <div class="wfbs-kpi"><b>124</b><small>Participants</small></div>
+              <div class="wfbs-kpi"><b>98%</b><small>Uptime</small></div>
+              <div class="wfbs-kpi"><b>2.1k</b><small>Bookings</small></div>
             </div>
-            <div class="fp-row w-90"></div>
-            <div class="fp-row w-65"></div>
+            <div class="wfbs-row w90"></div>
+            <div class="wfbs-row w60"></div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="fp-info">
-      <div class="fp-num">01</div>
-      <div class="fp-cat">Web &amp; Mobile · Australia · Healthcare</div>
-      <h3 class="fp-title">NDIS Disability<br>Support Platform</h3>
-      <p class="fp-desc">Production platform for the National Disability Insurance Scheme — participant management, service bookings, ShiftCare workforce integration, and zero-downtime CI/CD deployment for Australian clients.</p>
-      <div class="fp-tags">
-        <span>React</span><span>Python</span><span>Django</span><span>PostgreSQL</span><span>AWS</span>
+    <div class="wf-info">
+      <div class="wf-num">01</div>
+      <p class="wf-cat">Web &amp; Mobile · Australia · Healthcare</p>
+      <h3 class="wf-title">NDIS Disability<br>Support Platform</h3>
+      <p class="wf-desc">
+        Production platform for the National Disability Insurance Scheme in Australia.
+        Participant management, service bookings, ShiftCare workforce integration,
+        and zero-downtime CI/CD deployment.
+      </p>
+      <div class="wf-tags">
+        <span>React</span><span>Python</span><span>Django</span>
+        <span>PostgreSQL</span><span>AWS</span>
       </div>
-      <a href="#contact" class="proj-btn mag-btn"><span>Get Details →</span></a>
+      <a href="#contact" class="btn-acc-outline">Get Details →</a>
     </div>
   </div>
 
-  <!-- Project grid -->
+  <!-- Projects 02 & 03 + CTA -->
   <div class="container">
-    <div class="proj-grid">
+    <div class="work-grid">
 
-      <!-- Card 02 -->
-      <div class="proj-card reveal-up" data-delay="0" tabindex="0">
-        <div class="pc-shine" aria-hidden="true"></div>
-        <div class="pc-top">
-          <span class="pc-num">02</span>
-          <span class="pc-cat">Automation · Forms</span>
+      <div class="wg-card reveal-fade" data-delay="0">
+        <div class="wgc-top">
+          <span class="wgc-n">02</span>
+          <span class="wgc-cat">Automation · Forms</span>
         </div>
-        <div class="pc-art terminal-art" aria-hidden="true">
-          <div class="ta-ln"><span class="t-ok">✓</span> Form submitted</div>
-          <div class="ta-ln"><span class="t-arr">→</span> <span class="t-or">Signing</span> doc…</div>
-          <div class="ta-ln"><span class="t-ok">✓</span> Signature captured</div>
-          <div class="ta-ln"><span class="t-arr">→</span> <span class="t-bl">SMS</span> +61…</div>
-          <div class="ta-ln"><span class="t-ok">✓</span> Delivered <span class="t-dim">198ms</span></div>
-          <div class="ta-ln"><span class="t-ok">➜</span> <span class="t-cur">_</span></div>
+        <div class="wgc-art term-art" aria-hidden="true">
+          <div class="ta-l"><span class="t-g">✓</span> Form submitted</div>
+          <div class="ta-l"><span class="t-m">→</span> <span class="t-o">Signing</span> doc…</div>
+          <div class="ta-l"><span class="t-g">✓</span> Signature captured</div>
+          <div class="ta-l"><span class="t-m">→</span> <span class="t-b">SMS</span> +61…</div>
+          <div class="ta-l"><span class="t-g">✓</span> Delivered <span class="t-d">198ms</span></div>
+          <div class="ta-l"><span class="t-g">➜</span> <span class="t-cur">_</span></div>
         </div>
-        <h3 class="pc-title">SMS Sender &amp;<br>Form System</h3>
-        <p class="pc-desc">Smart SMS automation with JotForm signature collection, dynamic form builder, and real-time webhook delivery.</p>
-        <div class="pc-tags"><span>JotForm</span><span>SMS API</span><span>JavaScript</span></div>
-        <a href="#contact" class="pc-link">View Details →</a>
+        <h3 class="wgc-title">SMS Sender &amp;<br>Form System</h3>
+        <p class="wgc-desc">Smart SMS automation with JotForm signature collection, dynamic form builder, and real-time webhook delivery.</p>
+        <div class="wg-tags"><span>JotForm</span><span>SMS API</span><span>JavaScript</span></div>
+        <a href="#contact" class="wgc-link">Details →</a>
       </div>
 
-      <!-- Card 03 -->
-      <div class="proj-card reveal-up" data-delay="0.08" tabindex="0">
-        <div class="pc-shine" aria-hidden="true"></div>
-        <div class="pc-top">
-          <span class="pc-num">03</span>
-          <span class="pc-cat">Mobile · Fitness</span>
+      <div class="wg-card reveal-fade" data-delay="0.08">
+        <div class="wgc-top">
+          <span class="wgc-n">03</span>
+          <span class="wgc-cat">Mobile · Fitness</span>
         </div>
-        <div class="pc-art phone-art" aria-hidden="true">
-          <div class="pa-phone">
-            <svg viewBox="0 0 80 80" width="66" height="66" aria-hidden="true">
-              <circle cx="40" cy="40" r="31" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>
-              <circle cx="40" cy="40" r="31" fill="none" stroke="var(--acc)" stroke-width="6"
-                stroke-dasharray="135 60" stroke-dashoffset="28" stroke-linecap="round"/>
-              <text x="40" y="44" text-anchor="middle" fill="#fff" font-size="11" font-family="Barlow Condensed">70%</text>
-            </svg>
-            <div class="pa-stats"><span>🔥 2,400 cal</span><span>⚡ 48 min</span></div>
-          </div>
+        <div class="wgc-art phone-art" aria-hidden="true">
+          <svg viewBox="0 0 80 80" width="68" height="68">
+            <circle cx="40" cy="40" r="31" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="6"/>
+            <circle cx="40" cy="40" r="31" fill="none" stroke="var(--acc)" stroke-width="6"
+              stroke-dasharray="135 60" stroke-dashoffset="28" stroke-linecap="round"/>
+            <text x="40" y="44" text-anchor="middle" fill="#fff" font-size="11"
+                  font-family="Barlow Condensed">70%</text>
+          </svg>
+          <div class="phone-stats"><span>🔥 2,400 cal</span><span>⚡ 48 min</span></div>
         </div>
-        <h3 class="pc-title">Gym &amp; Fitness<br>Tracker</h3>
-        <p class="pc-desc">Cross-platform fitness app — workout plans, progress analytics, exercise libraries, trainer-client management.</p>
-        <div class="pc-tags"><span>React Native</span><span>Java</span><span>PostgreSQL</span></div>
-        <a href="#contact" class="pc-link">View Details →</a>
+        <h3 class="wgc-title">Gym &amp; Fitness<br>Tracker</h3>
+        <p class="wgc-desc">Cross-platform fitness app — workout plans, analytics, exercise libraries, trainer-client management for iOS &amp; Android.</p>
+        <div class="wg-tags"><span>React Native</span><span>Java</span><span>PostgreSQL</span></div>
+        <a href="#contact" class="wgc-link">Details →</a>
       </div>
 
-      <!-- CTA card -->
-      <div class="proj-card proj-cta-card reveal-up" data-delay="0.16">
-        <div class="cta-card-inner">
-          <h3>Next project<br><em>could be<br>yours.</em></h3>
-          <p>Open to freelance, collaboration &amp; full-time opportunities.</p>
-          <a href="#contact" class="proj-btn mag-btn"><span>Start a Conversation →</span></a>
-        </div>
+      <div class="wg-card wg-cta reveal-fade" data-delay="0.16">
+        <h3>Your project<br><em>could be<br>next.</em></h3>
+        <p>Open to freelance, collaboration &amp; full-time.</p>
+        <a href="#contact" class="btn-primary">Start a Conversation →</a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     CONTACT
-═══════════════════════════════════════════ -->
-<section id="contact" class="contact" aria-label="Contact Abhishek Ojha">
-  <div class="contact-bg" aria-hidden="true"></div>
-
+<!-- ════════════════════════════════════════════════
+     SKILLS STRIP
+════════════════════════════════════════════════ -->
+<section id="skills" class="ch-skills" aria-label="Skills">
   <div class="container">
-    <div class="sec-eyebrow reveal-up" data-delay="0">04 — Contact</div>
-    <h2 class="sec-title reveal-lines">Let's build<br><em>something</em><br>great.</h2>
+    <p class="ch-eyebrow reveal-fade" data-delay="0">What I Build With</p>
+    <div class="skills-cats reveal-fade" data-delay="0.08">
+      <div class="sc-group">
+        <div class="sc-label">Frontend</div>
+        <div class="sc-badges">
+          <span class="scb hi">React</span><span class="scb hi">React Native</span>
+          <span class="scb">JavaScript</span><span class="scb">Angular</span>
+          <span class="scb">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="sc-group">
+        <div class="sc-label">Backend</div>
+        <div class="sc-badges">
+          <span class="scb hi">Python</span><span class="scb hi">Django</span>
+          <span class="scb">Node.js</span><span class="scb">Java</span>
+          <span class="scb">REST APIs</span>
+        </div>
+      </div>
+      <div class="sc-group">
+        <div class="sc-label">Cloud &amp; Data</div>
+        <div class="sc-badges">
+          <span class="scb hi">AWS</span><span class="scb hi">PostgreSQL</span>
+          <span class="scb">MySQL</span><span class="scb">Redis</span>
+          <span class="scb">S3 / EC2</span>
+        </div>
+      </div>
+      <div class="sc-group">
+        <div class="sc-label">DevOps</div>
+        <div class="sc-badges">
+          <span class="scb hi">Docker</span><span class="scb hi">CI/CD</span>
+          <span class="scb">Git / GitHub</span>
+          <span class="scb">GitHub Actions</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     CHAPTER VIII — CONTACT
+════════════════════════════════════════════════ -->
+<section id="contact" class="ch-contact" aria-label="Contact">
+  <div class="contact-bg-img-wrap" aria-hidden="true">
+    <img src="assets/latest5.jpeg" alt="" loading="lazy" class="contact-bg-img"/>
+    <div class="contact-overlay"></div>
+    <div class="grain"></div>
+  </div>
+
+  <div class="container contact-content">
+    <p class="ch-eyebrow contact-eyebrow reveal-fade" data-delay="0">Chapter VIII · Let's Build</p>
+    <h2 class="contact-headline reveal-fade" data-delay="0.08">
+      The next chapter<br><em>starts with</em><br>a conversation.
+    </h2>
 
     <div class="contact-layout">
 
-      <!-- Left: links -->
-      <div class="contact-links reveal-up" data-delay="0.05">
-        <p class="contact-lede">Have a project in mind? I respond within 24 hours.</p>
-
+      <!-- Links -->
+      <div class="contact-links reveal-fade" data-delay="0.1">
+        <p class="contact-lede">I respond within 24 hours. Let's make something real.</p>
         <div class="clinks">
-          <a href="https://abhishekojha1.com.np/" target="_blank" rel="noopener" class="clink mag-btn">
-            <span class="clink-label">Portfolio</span>
-            <span class="clink-val">abhishekojha1.com.np ↗</span>
-          </a>
-          <a href="mailto:abhishekojha.work@gmail.com" class="clink mag-btn">
+          <a href="mailto:abhishekojha.work@gmail.com" class="clink">
             <span class="clink-label">Email</span>
-            <span class="clink-val">abhishekojha.work@gmail.com</span>
+            <span class="clink-val">abhishekojha.work@gmail.com ↗</span>
           </a>
-          <a href="https://github.com/AbhishekOzha" target="_blank" rel="noopener" class="clink mag-btn">
+          <a href="https://github.com/AbhishekOzha" target="_blank" rel="noopener" class="clink">
             <span class="clink-label">GitHub</span>
             <span class="clink-val">AbhishekOzha ↗</span>
           </a>
-          <a href="https://www.linkedin.com/in/abhishek-ozha/" target="_blank" rel="noopener" class="clink mag-btn">
+          <a href="https://www.linkedin.com/in/abhishek-ozha/" target="_blank" rel="noopener" class="clink">
             <span class="clink-label">LinkedIn</span>
             <span class="clink-val">abhishek-ozha ↗</span>
           </a>
-          <div class="clink clink-plain">
+          <div class="clink">
             <span class="clink-label">Location</span>
             <span class="clink-val">Biratnagar, Province No. 1, Nepal</span>
           </div>
         </div>
       </div>
 
-      <!-- Right: form -->
-      <form class="contact-form reveal-up" data-delay="0.12" onsubmit="sendForm(event)" novalidate>
+      <!-- Form -->
+      <form class="contact-form reveal-fade" data-delay="0.18" onsubmit="sendForm(event)" novalidate>
         <div class="form-row">
           <div class="form-field">
-            <label for="fn">Name <span aria-hidden="true">*</span></label>
+            <label for="fn">Name</label>
             <input id="fn" type="text" name="name" autocomplete="name" placeholder="Your name" required/>
           </div>
           <div class="form-field">
-            <label for="fe">Email <span aria-hidden="true">*</span></label>
+            <label for="fe">Email</label>
             <input id="fe" type="email" name="email" autocomplete="email" placeholder="you@example.com" required/>
           </div>
         </div>
         <div class="form-field">
           <label for="fs">Subject</label>
-          <input id="fs" type="text" name="subject" placeholder="Project inquiry, collab, hire…"/>
+          <input id="fs" type="text" placeholder="Project inquiry, collab, hire…"/>
         </div>
         <div class="form-field">
-          <label for="fm">Message <span aria-hidden="true">*</span></label>
+          <label for="fm">Message</label>
           <textarea id="fm" name="message" placeholder="Tell me about your project…" required></textarea>
         </div>
-        <button type="submit" class="form-submit mag-btn" id="formBtn">
-          <span class="form-btn-bg" aria-hidden="true"></span>
+        <button type="submit" class="btn-primary" id="formBtn">
           <span id="formBtnText">Send Message →</span>
         </button>
         <p id="form-status" role="status" aria-live="polite"></p>
@@ -540,33 +714,31 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
+<!-- ════════════════════════════════════════════════
      FOOTER
-═══════════════════════════════════════════ -->
-<footer aria-label="Site footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <img src="assets/logo.jpg" alt="AO" width="26" height="26" loading="lazy"/>
-        AO<em>.</em>
-      </div>
-      <div class="footer-copy">
-        <p>© 2026 Abhishek Ojha · Biratnagar, Nepal</p>
-        <p>Full Stack Developer · Open to Opportunities</p>
-      </div>
-      <a href="#home" class="footer-top mag-btn" aria-label="Scroll to top">
-        <span>↑ Top</span>
-      </a>
+════════════════════════════════════════════════ -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-logo">
+      <img src="assets/logo.jpg" alt="" width="24" height="24" loading="lazy"/>
+      AO<em>.</em>
     </div>
+    <div class="footer-copy">
+      <p>© 2026 Abhishek Ojha · Biratnagar, Nepal</p>
+      <p>Full Stack Developer · Open to Opportunities</p>
+    </div>
+    <a href="#hero" class="footer-top">↑ Back to top</a>
   </div>
 </footer>
 
-<!-- Toast notification -->
-<div id="toast" role="alert" aria-live="assertive">Message sent — I'll be in touch soon 🙏</div>
+<!-- Toast -->
+<div id="toast" role="alert" aria-live="assertive">
+  Message sent — I'll be in touch soon 🙏
+</div>
 
-<!-- ═══════════════════════════════════════════
-     SCRIPTS — order matters
-═══════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════════ -->
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
