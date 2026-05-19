@@ -3,338 +3,471 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abhishek Ojha — Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <title>Abhishek Ojha — Full Stack Developer</title>
+  <meta name="description" content="Abhishek Ojha — Full Stack Developer from Biratnagar, Nepal. Building production-grade digital experiences." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Noise overlay -->
+  <div class="noise"></div>
 
-  <!-- Progress bar & custom cursor -->
-  <div id="progress-line"></div>
-  <div id="cursor"></div>
-  <div id="cursor-ring"></div>
+  <!-- Custom cursor -->
+  <div id="cur-dot"></div>
+  <div id="cur-outline"></div>
+  <div id="cur-label"></div>
+
+  <!-- Scroll progress -->
+  <div id="progress"></div>
 
   <!-- ── NAV ── -->
-  <nav>
-    <div class="logo">Abhishek<span>.</span></div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
+  <nav id="nav">
+    <a href="#home" class="nav-logo">AO<span class="logo-dot">.</span></a>
+    <div class="nav-center">
+      <a href="#about"    class="nav-link" data-label="About">About</a>
+      <a href="#skills"   class="nav-link" data-label="Skills">Skills</a>
+      <a href="#projects" class="nav-link" data-label="Work">Work</a>
+      <a href="#contact"  class="nav-link" data-label="Contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta mag-btn">
+      <span>Hire Me</span>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span>
     </button>
   </nav>
 
   <!-- Mobile menu -->
-  <div class="nav-mobile-menu" id="mobileMenu">
-    <button class="nav-close" onclick="toggleMenu()">✕</button>
-    <a href="#about"    onclick="toggleMenu()">About</a>
-    <a href="#skills"   onclick="toggleMenu()">Skills</a>
-    <a href="#projects" onclick="toggleMenu()">Projects</a>
-    <a href="#contact"  onclick="toggleMenu()">Contact</a>
+  <div class="mob-menu" id="mobMenu">
+    <a href="#about"    onclick="closeMob()">About</a>
+    <a href="#skills"   onclick="closeMob()">Skills</a>
+    <a href="#projects" onclick="closeMob()">Work</a>
+    <a href="#contact"  onclick="closeMob()">Contact</a>
+    <div class="mob-meta">Biratnagar, Nepal · Open to opportunities</div>
   </div>
 
   <!-- ── HERO ── -->
   <section class="hero" id="home">
-    <div class="hero-orb"></div>
+    <!-- Shader background canvas -->
+    <canvas id="heroCanvas"></canvas>
+    <!-- Grid overlay -->
+    <div class="hero-grid-overlay"></div>
 
-    <div class="hero-left">
-      <div class="hero-eyebrow">
-        <div class="blink"></div>
-        Open to opportunities
+    <div class="hero-content">
+      <div class="hero-chip reveal-chip">
+        <span class="chip-dot"></span>Available for projects
       </div>
 
-      <h1>
-        <div class="word-reveal"><span style="animation-delay:.9s">Hi,</span></div>
-        <div class="word-reveal"><span style="animation-delay:1.0s">&nbsp;I'm</span></div><br>
-        <span class="line2">
-          <div class="word-reveal" style="display:inline-block"><span style="animation-delay:1.1s">Abhishek</span></div>
-          <div class="word-reveal" style="display:inline-block"><span style="animation-delay:1.2s">&nbsp;Ojha</span></div>
-        </span>
+      <h1 class="hero-h1">
+        <div class="line-mask"><span class="reveal-line" style="transition-delay:.1s">Full&#8202;Stack</span></div>
+        <div class="line-mask"><em class="reveal-line" style="transition-delay:.22s">Developer</em></div>
+        <div class="line-mask"><span class="reveal-line" style="transition-delay:.34s">&amp; Creator</span></div>
       </h1>
 
-      <p class="hero-desc">
-        A developer &amp; creator from <strong>Biratnagar, Nepal</strong> —
-        crafting meaningful digital experiences with clean code and bold ideas.
+      <p class="hero-sub reveal-fade" style="transition-delay:.55s">
+        Crafting production-grade digital experiences<br>from <strong>Biratnagar, Nepal</strong> — clean, bold &amp; built to last.
       </p>
 
-      <div class="hero-actions">
-        <a href="https://abhishekojha1.com.np/" target="_blank" class="btn btn-primary">Visit Website ↗</a>
-        <a href="#contact" class="btn btn-outline">Let's Talk</a>
+      <div class="hero-btns reveal-fade" style="transition-delay:.7s">
+        <a href="https://abhishekojha1.com.np/" target="_blank" class="btn-glass mag-btn">
+          <span>View Portfolio ↗</span>
+        </a>
+        <a href="#projects" class="btn-text mag-btn">
+          <span>See Work</span>
+          <svg width="18" height="18" viewBox="0 0 18 18"><path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="hero-meta reveal-fade" style="transition-delay:.85s">
+        <div class="meta-item"><span class="meta-n counter" data-to="3">0</span><span class="meta-label">Yrs Exp</span></div>
+        <div class="meta-sep"></div>
+        <div class="meta-item"><span class="meta-n counter" data-to="4">0</span><span class="meta-label">Prod Apps</span></div>
+        <div class="meta-sep"></div>
+        <div class="meta-item"><span class="meta-n counter" data-to="50">0</span><span class="meta-label">Projects</span></div>
       </div>
     </div>
 
-    <div class="hero-right">
-      <div class="photo-frame">
-      <div class="photo-ring"></div>
+    <!-- Floating badges -->
+    <div class="hero-badges">
+      <div class="badge badge1 float-anim">React</div>
+      <div class="badge badge2 float-anim" style="animation-delay:-.8s">Django</div>
+      <div class="badge badge3 float-anim" style="animation-delay:-1.6s">AWS</div>
+      <div class="badge badge4 float-anim" style="animation-delay:-.4s">PostgreSQL</div>
+    </div>
 
-        <div class="photo-img-wrap">
-          <img src="assets/logo.jpg" alt="Abhishek's Photo">
-        </div>
-        <div class="location-tag">
-          <span class="status-dot"></span>
-
-        </div>
-      </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
     </div>
   </section>
 
-  <!-- ── CONSTELLATION ── -->
-  <div class="constellation-wrap">
-    <canvas id="cCanvas"></canvas>
+  <!-- ── MARQUEE ── -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>React</span><span class="mx-dot">✦</span>
+      <span>Django</span><span class="mx-dot">✦</span>
+      <span>AWS</span><span class="mx-dot">✦</span>
+      <span>Full Stack</span><span class="mx-dot">✦</span>
+      <span>PostgreSQL</span><span class="mx-dot">✦</span>
+      <span>Node.js</span><span class="mx-dot">✦</span>
+      <span>React Native</span><span class="mx-dot">✦</span>
+      <span>Python</span><span class="mx-dot">✦</span>
+      <span>CI/CD</span><span class="mx-dot">✦</span>
+      <span>REST APIs</span><span class="mx-dot">✦</span>
+      <!-- duplicate for seamless loop -->
+      <span>React</span><span class="mx-dot">✦</span>
+      <span>Django</span><span class="mx-dot">✦</span>
+      <span>AWS</span><span class="mx-dot">✦</span>
+      <span>Full Stack</span><span class="mx-dot">✦</span>
+      <span>PostgreSQL</span><span class="mx-dot">✦</span>
+      <span>Node.js</span><span class="mx-dot">✦</span>
+      <span>React Native</span><span class="mx-dot">✦</span>
+      <span>Python</span><span class="mx-dot">✦</span>
+      <span>CI/CD</span><span class="mx-dot">✦</span>
+      <span>REST APIs</span><span class="mx-dot">✦</span>
+    </div>
   </div>
 
   <!-- ── ABOUT ── -->
   <section class="about" id="about">
-    <div class="section-head reveal">
-      <span class="section-num">01</span>
-      <h2 class="section-title">About Me</h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p>Hello! I'm <strong>Abhishek Ojha</strong>, a developer based in
-          <strong>Biratnagar, Province No. 1, Nepal</strong>. I build things for the web and mobile —
-          clean, purposeful, and built to last.</p>
-        <p>I've worked on real-world production apps across healthcare, fitness, and business sectors —
-          including NDIS disability support platforms, ShiftCare workforce tools, and mobile fitness
-          applications for Australian clients.</p>
-        <p>When I'm not coding, I'm exploring Nepal or learning something new that keeps me ahead of the curve.</p>
+    <div class="container">
+      <div class="sec-label sc-reveal">01 — About</div>
+      <div class="about-grid">
+        <div class="about-left sc-reveal">
+          <h2 class="sec-h2">Building things<br><em>that actually ship.</em></h2>
+        </div>
+        <div class="about-right sc-reveal">
+          <p>I'm <strong>Abhishek Ojha</strong> — a full-stack developer based in <strong>Biratnagar, Province No. 1, Nepal</strong>. I design and build end-to-end web and mobile products that are fast, maintainable, and production-ready.</p>
+          <p>I've shipped real-world apps across healthcare, fitness, and enterprise sectors — including NDIS disability support platforms in Australia, ShiftCare workforce integration, and mobile fitness apps for international clients.</p>
+          <p>I obsess over the details — from system architecture to pixel-level polish — because I believe the best software is invisible to its users.</p>
+          <div class="about-tags">
+            <span>Biratnagar, Nepal</span>
+            <span>Open to Remote</span>
+            <span>Freelance & FT</span>
+          </div>
+        </div>
       </div>
-      <div class="about-stats reveal">
-        <div class="stat-box"><div class="stat-num" data-count="3">0</div><div class="stat-label">Years Learning</div></div>
-        <div class="stat-box"><div class="stat-num" data-count="4">0</div><div class="stat-label">Production Apps</div></div>
-        <div class="stat-box"><div class="stat-num" data-count="6">0</div><div class="stat-label">Technologies</div></div>
-        <div class="stat-box"><div class="stat-num" data-count="100">0</div><div class="stat-label">% Commitment</div></div>
+
+      <!-- About cards -->
+      <div class="about-cards">
+        <div class="acard sc-reveal" style="--delay:.0s">
+          <div class="acard-icon">🏗️</div>
+          <div class="acard-title">Architecture First</div>
+          <div class="acard-desc">Systems designed to scale, not just to ship.</div>
+        </div>
+        <div class="acard sc-reveal" style="--delay:.08s">
+          <div class="acard-icon">⚡</div>
+          <div class="acard-title">Performance Obsessed</div>
+          <div class="acard-desc">Every millisecond matters in production.</div>
+        </div>
+        <div class="acard sc-reveal" style="--delay:.16s">
+          <div class="acard-icon">🌍</div>
+          <div class="acard-title">Global Clients</div>
+          <div class="acard-desc">Delivered for AU, US, and local enterprises.</div>
+        </div>
+        <div class="acard sc-reveal" style="--delay:.24s">
+          <div class="acard-icon">🔒</div>
+          <div class="acard-title">Security Minded</div>
+          <div class="acard-desc">Auth, RBAC, and compliance baked in from day one.</div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ── SKILLS ── -->
-  <section id="skills">
-    <div class="section-head reveal">
-      <span class="section-num">02</span>
-      <h2 class="section-title">Skills &amp; Tools</h2>
-    </div>
-    <div class="skills-wrap">
+  <section class="skills" id="skills">
+    <div class="container">
+      <div class="sec-label sc-reveal">02 — Skills</div>
+      <h2 class="sec-h2 sc-reveal">What I work with<em>.</em></h2>
 
-      <div class="skill-item reveal">
-        <span class="skill-icon">🌐</span>
-        <div class="skill-name">Web Development</div>
-        <div class="skill-desc">HTML, CSS, JavaScript — building responsive, fast, and accessible websites.</div>
-        <div class="skill-level">
-          <div class="skill-dot filled"></div><div class="skill-dot filled"></div>
-          <div class="skill-dot filled"></div><div class="skill-dot filled"></div><div class="skill-dot"></div>
+      <div class="skills-grid">
+        <div class="skill-row sc-reveal" style="--delay:.0s" data-pct="88">
+          <div class="sk-left">
+            <span class="sk-icon">🌐</span>
+            <div>
+              <div class="sk-name">Web Development</div>
+              <div class="sk-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            </div>
+          </div>
+          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill"></div></div><span class="sk-pct">88%</span></div>
+        </div>
+
+        <div class="skill-row sc-reveal" style="--delay:.06s" data-pct="78">
+          <div class="sk-left">
+            <span class="sk-icon">⚛️</span>
+            <div>
+              <div class="sk-name">React &amp; React Native</div>
+              <div class="sk-tags"><span>Hooks</span><span>Redux</span><span>Mobile</span></div>
+            </div>
+          </div>
+          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill"></div></div><span class="sk-pct">78%</span></div>
+        </div>
+
+        <div class="skill-row sc-reveal" style="--delay:.12s" data-pct="82">
+          <div class="sk-left">
+            <span class="sk-icon">🐍</span>
+            <div>
+              <div class="sk-name">Python / Django</div>
+              <div class="sk-tags"><span>DRF</span><span>Celery</span><span>Auth</span></div>
+            </div>
+          </div>
+          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill"></div></div><span class="sk-pct">82%</span></div>
+        </div>
+
+        <div class="skill-row sc-reveal" style="--delay:.18s" data-pct="75">
+          <div class="sk-left">
+            <span class="sk-icon">☁️</span>
+            <div>
+              <div class="sk-name">AWS &amp; Cloud</div>
+              <div class="sk-tags"><span>EC2</span><span>S3</span><span>RDS</span></div>
+            </div>
+          </div>
+          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill"></div></div><span class="sk-pct">75%</span></div>
+        </div>
+
+        <div class="skill-row sc-reveal" style="--delay:.24s" data-pct="85">
+          <div class="sk-left">
+            <span class="sk-icon">🗄️</span>
+            <div>
+              <div class="sk-name">Databases</div>
+              <div class="sk-tags"><span>PostgreSQL</span><span>MySQL</span><span>Redis</span></div>
+            </div>
+          </div>
+          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill"></div></div><span class="sk-pct">85%</span></div>
+        </div>
+
+        <div class="skill-row sc-reveal" style="--delay:.30s" data-pct="90">
+          <div class="sk-left">
+            <span class="sk-icon">🔧</span>
+            <div>
+              <div class="sk-name">Dev Tools &amp; CI/CD</div>
+              <div class="sk-tags"><span>Git</span><span>GitHub Actions</span><span>Docker</span></div>
+            </div>
+          </div>
+          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill"></div></div><span class="sk-pct">90%</span></div>
         </div>
       </div>
 
-      <div class="skill-item reveal">
-        <span class="skill-icon">⚛️</span>
-        <div class="skill-name">React</div>
-        <div class="skill-desc">Component-based UIs, hooks, state management, and modern React patterns.</div>
-        <div class="skill-level">
-          <div class="skill-dot filled"></div><div class="skill-dot filled"></div>
-          <div class="skill-dot filled"></div><div class="skill-dot"></div><div class="skill-dot"></div>
+      <!-- Tech orbit display -->
+      <div class="tech-orbit-wrap sc-reveal">
+        <div class="tech-orbit">
+          <div class="orbit-center"><span>Stack</span></div>
+          <div class="orbit-ring r1">
+            <div class="orbit-chip" style="--a:0deg">React</div>
+            <div class="orbit-chip" style="--a:120deg">Django</div>
+            <div class="orbit-chip" style="--a:240deg">AWS</div>
+          </div>
+          <div class="orbit-ring r2">
+            <div class="orbit-chip" style="--a:60deg">PostgreSQL</div>
+            <div class="orbit-chip" style="--a:180deg">Node.js</div>
+            <div class="orbit-chip" style="--a:300deg">Python</div>
+          </div>
         </div>
       </div>
-
-      <div class="skill-item reveal">
-        <span class="skill-icon">🗄️</span>
-        <div class="skill-name">Backend</div>
-        <div class="skill-desc">Node.js, Express, REST APIs, and database integration for robust backends.</div>
-        <div class="skill-level">
-          <div class="skill-dot filled"></div><div class="skill-dot filled"></div>
-          <div class="skill-dot filled"></div><div class="skill-dot"></div><div class="skill-dot"></div>
-        </div>
-      </div>
-
-      <div class="skill-item reveal">
-        <span class="skill-icon">📋</span>
-        <div class="skill-name">Form &amp; Workflow Systems</div>
-        <div class="skill-desc">JotForm signatures, SMS senders, dynamic form builders, and automation flows.</div>
-        <div class="skill-level">
-          <div class="skill-dot filled"></div><div class="skill-dot filled"></div>
-          <div class="skill-dot filled"></div><div class="skill-dot filled"></div><div class="skill-dot"></div>
-        </div>
-      </div>
-
-      <div class="skill-item reveal">
-        <span class="skill-icon">🔧</span>
-        <div class="skill-name">Dev Tools</div>
-        <div class="skill-desc">Git, GitHub, VS Code, terminal workflows, and deployment pipelines.</div>
-        <div class="skill-level">
-          <div class="skill-dot filled"></div><div class="skill-dot filled"></div>
-          <div class="skill-dot filled"></div><div class="skill-dot filled"></div><div class="skill-dot"></div>
-        </div>
-      </div>
-
-      <div class="skill-item reveal">
-        <span class="skill-icon">📱</span>
-        <div class="skill-name">Mobile &amp; Responsive</div>
-        <div class="skill-desc">Cross-platform mobile apps and mobile-first layouts across all screen sizes.</div>
-        <div class="skill-level">
-          <div class="skill-dot filled"></div><div class="skill-dot filled"></div>
-          <div class="skill-dot filled"></div><div class="skill-dot filled"></div><div class="skill-dot filled"></div>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <!-- ── PROJECTS ── -->
   <section class="projects" id="projects">
-    <div class="projects-bg-grid"></div>
-    <div class="section-head reveal">
-      <span class="section-num">03</span>
-      <h2 class="section-title">Projects</h2>
+    <div class="container">
+      <div class="sec-label sc-reveal">03 — Work</div>
+      <h2 class="sec-h2 sc-reveal">Selected Projects<em>.</em></h2>
     </div>
 
-    <div class="projects-layout reveal">
+    <!-- Horizontal scroll strip -->
+    <div class="proj-track-wrap">
+      <div class="proj-track" id="projTrack">
 
-      <!-- Featured project -->
-      <div class="proj-card featured illustration">
-        <div class="proj-illus-stage">
-          <div class="orbit-wrap"><div class="orbit-dot"></div></div>
-          <div class="browser-mockup">
-            <div class="browser-bar">
-              <div class="browser-dot bd-r"></div>
-              <div class="browser-dot bd-y"></div>
-              <div class="browser-dot bd-g"></div>
-              <div class="browser-url">https://www.empowerliving.com.au/</div>
+        <div class="proj-card pcard-featured sc-reveal" style="--delay:.0s">
+          <div class="proj-card-inner">
+            <div class="proj-num">01</div>
+            <div class="proj-eyebrow">Web &amp; Mobile · Australia</div>
+            <div class="proj-name">NDIS Disability<br>Support Platform</div>
+            <p class="proj-body">Comprehensive platform for NDIS in Australia — participant management, service bookings, progress tracking, and full ShiftCare workforce integration. Production-grade with CI/CD pipelines.</p>
+            <div class="proj-stack">
+              <span>React</span><span>Python</span><span>Django</span><span>PostgreSQL</span><span>AWS</span>
             </div>
-            <div class="browser-body">
-              <div class="browser-line accent"></div>
-              <div class="browser-line short"></div>
-              <div class="browser-img-block">⚕️</div>
-              <div class="browser-line med"></div>
-              <div class="browser-line short"></div>
-              <div class="browser-line"></div>
+            <a href="#contact" class="proj-cta mag-btn"><span>Get Details →</span></a>
+          </div>
+          <div class="proj-card-art">
+            <div class="art-browser">
+              <div class="art-bar">
+                <div class="art-dot dr"></div><div class="art-dot dy"></div><div class="art-dot dg"></div>
+                <div class="art-url">empowerliving.com.au</div>
+              </div>
+              <div class="art-body">
+                <div class="art-sidebar"></div>
+                <div class="art-main">
+                  <div class="art-line w80 accent"></div>
+                  <div class="art-line w55"></div>
+                  <div class="art-card-block">
+                    <div class="art-kpi"><span class="kpi-n">124</span><span class="kpi-l">Participants</span></div>
+                    <div class="art-kpi"><span class="kpi-n">98%</span><span class="kpi-l">Uptime</span></div>
+                    <div class="art-kpi"><span class="kpi-n">2.1k</span><span class="kpi-l">Bookings</span></div>
+                  </div>
+                  <div class="art-line w90"></div>
+                  <div class="art-line w70"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="proj-info">
-          <div class="proj-number">01</div>
-          <div class="proj-tag">Web &amp; Mobile · Featured</div>
-          <div class="proj-title">NDIS Disability Support Platform</div>
-          <p class="proj-desc">A comprehensive web and mobile application for NDIS (National Disability Insurance Scheme) in Australia. Includes participant management, service bookings, progress tracking, and ShiftCare workforce integration.</p>
-          <div class="proj-tech">
-            <span>React</span><span>Python</span><span>Django</span>
-            <span>Github CI/CD</span><span>Mobile</span><span>AUS</span>
-          </div>
-          <a href="#contact" class="proj-link">Get Details →</a>
-        </div>
-      </div>
 
-      <!-- SMS project -->
-      <div class="proj-card illustration">
-        <div class="proj-illus-stage">
-          <div class="terminal-mockup">
-            <div class="browser-bar">
-              <div class="browser-dot bd-r"></div>
-              <div class="browser-dot bd-y"></div>
-              <div class="browser-dot bd-g"></div>
+        <div class="proj-card sc-reveal" style="--delay:.06s">
+          <div class="proj-card-inner">
+            <div class="proj-num">02</div>
+            <div class="proj-eyebrow">Automation · Forms</div>
+            <div class="proj-name">SMS Sender &amp;<br>Form System</div>
+            <p class="proj-body">Smart SMS automation with JotForm signature collection, dynamic form builder, and bulk message delivery. Real-time delivery tracking with webhook integrations.</p>
+            <div class="proj-stack">
+              <span>JotForm</span><span>SMS API</span><span>JavaScript</span><span>Webhooks</span>
             </div>
-            <div class="terminal-body">
-              <div><span class="t-green">✓</span> Form submitted</div>
-              <div><span class="t-muted">→ </span><span class="t-orange">Signing</span> document…</div>
-              <div><span class="t-green">✓</span> Signature captured</div>
-              <div><span class="t-muted">→ </span><span class="t-blue">SMS</span> sending to +61…</div>
-              <div><span class="t-green">✓</span> Delivered <span class="t-muted">200ms</span></div>
-              <div><span class="t-green">➜</span> <span class="t-cursor"></span></div>
+            <a href="#contact" class="proj-cta mag-btn"><span>Get Details →</span></a>
+          </div>
+          <div class="proj-card-art">
+            <div class="art-terminal">
+              <div class="art-bar">
+                <div class="art-dot dr"></div><div class="art-dot dy"></div><div class="art-dot dg"></div>
+                <span style="color:#666;font-size:.65rem;margin-left:.5rem">~/sms-system</span>
+              </div>
+              <div class="art-term-body">
+                <div class="tline"><span class="tg">✓</span> Form submitted</div>
+                <div class="tline"><span class="tm">→</span> <span class="to">Signing</span> document…</div>
+                <div class="tline"><span class="tg">✓</span> Signature captured</div>
+                <div class="tline"><span class="tm">→</span> <span class="tb">SMS</span> sending +61…</div>
+                <div class="tline"><span class="tg">✓</span> Delivered <span class="tm">198ms</span></div>
+                <div class="tline"><span class="tg">➜</span> <span class="t-blink">_</span></div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="proj-info">
-          <div class="proj-tag">Automation &amp; Forms</div>
-          <div class="proj-title">SMS Sender &amp; Form System</div>
-          <p class="proj-desc">Smart SMS automation with JotForm signature collection, dynamic form builder, and bulk message delivery workflows.</p>
-          <div class="proj-tech"><span>JotForm</span><span>SMS API</span><span>JavaScript</span></div>
-          <a href="#contact" class="proj-link">Get Details →</a>
+
+        <div class="proj-card sc-reveal" style="--delay:.12s">
+          <div class="proj-card-inner">
+            <div class="proj-num">03</div>
+            <div class="proj-eyebrow">Mobile App · Fitness</div>
+            <div class="proj-name">Gym &amp; Fitness<br>Tracker</div>
+            <p class="proj-body">Full-featured fitness tracking app with workout plans, progress analytics, exercise libraries, and trainer-client management. Cross-platform for iOS and Android.</p>
+            <div class="proj-stack">
+              <span>React Native</span><span>Java</span><span>PostgreSQL</span><span>REST API</span>
+            </div>
+            <a href="#contact" class="proj-cta mag-btn"><span>Get Details →</span></a>
+          </div>
+          <div class="proj-card-art art-mobile-wrap">
+            <div class="art-phone">
+              <div class="art-phone-screen">
+                <div class="phone-top-bar">Fitness</div>
+                <div class="phone-ring-wrap">
+                  <svg viewBox="0 0 80 80" width="80" height="80">
+                    <circle cx="40" cy="40" r="32" fill="none" stroke="#1f2937" stroke-width="6"/>
+                    <circle cx="40" cy="40" r="32" fill="none" stroke="var(--accent)" stroke-width="6" stroke-dasharray="140 60" stroke-dashoffset="30" stroke-linecap="round"/>
+                    <text x="40" y="44" text-anchor="middle" fill="#fff" font-size="11" font-family="DM Mono">70%</text>
+                  </svg>
+                </div>
+                <div class="phone-stats">
+                  <div class="ph-s"><span>🔥</span>2,400 cal</div>
+                  <div class="ph-s"><span>⚡</span>48 min</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Fitness app -->
-      <div class="proj-card">
-        <div class="proj-number">03</div>
-        <div class="proj-tag">Mobile App · Fitness</div>
-        <div class="proj-title">Gym &amp; Fitness App</div>
-        <p class="proj-desc">A full-featured fitness tracking app with workout plans, progress analytics, and exercise libraries. Designed for gyms and personal trainers to manage client journeys.</p>
-        <div class="proj-tech"><span>React Native</span><span>Java</span><span>PostgreSQL</span></div>
-        <a href="#contact" class="proj-link">Get Details →</a>
-      </div>
-
-      <!-- CTA card -->
-      <div class="proj-card cta-card">
-        <div>
-          <div class="cta-text">Have a project idea? Let's build it.</div>
-          <div class="cta-sub">Open to freelance, collaboration &amp; full-time roles</div>
+        <!-- CTA card -->
+        <div class="proj-card proj-cta-card sc-reveal" style="--delay:.18s">
+          <div class="cta-card-inner">
+            <div class="cta-heading">Got a project<br><em>in mind?</em></div>
+            <p>Open to freelance, collaboration, and full-time roles. Let's build something remarkable together.</p>
+            <a href="#contact" class="btn-glass mag-btn cta-big-btn">
+              <span>Start Conversation →</span>
+            </a>
+          </div>
         </div>
-        <a href="#contact" class="cta-btn">Start a conversation →</a>
-      </div>
 
+      </div>
+      <div class="proj-drag-hint">← drag to explore →</div>
     </div>
   </section>
 
   <!-- ── CONTACT ── -->
   <section class="contact" id="contact">
-    <div class="section-head reveal">
-      <span class="section-num">04</span>
-      <h2 class="section-title">Get in Touch</h2>
-    </div>
-    <div class="contact-grid">
+    <div class="container">
+      <div class="sec-label sc-reveal">04 — Contact</div>
+      <h2 class="sec-h2 sc-reveal">Let's build<br><em>something great.</em></h2>
 
-      <div class="reveal">
-        <p class="contact-desc">Have a project in mind, a question, or just want to say hello?
-          I'd love to hear from you — let's build something together.</p>
-        <div class="contact-links">
-          <a href="https://abhishekojha1.com.np/" class="contact-link" target="_blank">
-            <span class="icon">🌐</span><span>abhishekojha1.com.np</span>
-          </a>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=abhishekojha.work@gmail.com" class="contact-link" target="_blank" rel="noopener">
-            <span class="icon">✉️</span><span>abhishekojha.work@gmail.com</span>
-          </a>
-          <a href="https://github.com/AbhishekOzha" class="contact-link" target="_blank">
-            <span class="icon">🐱</span><span>github.com/AbhishekOzha</span>
-          </a>
-          <a href="https://www.linkedin.com/in/abhishek-ozha/" class="contact-link" target="_blank">
-            <span class="icon">💼</span><span>linkedin.com/in/abhishek-ozha</span>
-          </a>
-          <div class="contact-link">
-            <span class="icon">📍</span><span>Biratnagar, Province No. 1, Nepal</span>
+      <div class="contact-grid">
+        <div class="contact-left sc-reveal">
+          <p class="contact-desc">Have a project in mind or just want to talk tech? I respond within 24 hours.</p>
+
+          <div class="clinks">
+            <a href="https://abhishekojha1.com.np/" class="clink mag-btn" target="_blank">
+              <span class="clink-icon">🌐</span>
+              <div><div class="clink-label">Portfolio</div><div class="clink-val">abhishekojha1.com.np</div></div>
+              <span class="clink-arrow">↗</span>
+            </a>
+            <a href="mailto:abhishekojha.work@gmail.com" class="clink mag-btn">
+              <span class="clink-icon">✉️</span>
+              <div><div class="clink-label">Email</div><div class="clink-val">abhishekojha.work@gmail.com</div></div>
+              <span class="clink-arrow">↗</span>
+            </a>
+            <a href="https://github.com/AbhishekOzha" class="clink mag-btn" target="_blank">
+              <span class="clink-icon">🐱</span>
+              <div><div class="clink-label">GitHub</div><div class="clink-val">github.com/AbhishekOzha</div></div>
+              <span class="clink-arrow">↗</span>
+            </a>
+            <a href="https://www.linkedin.com/in/abhishek-ozha/" class="clink mag-btn" target="_blank">
+              <span class="clink-icon">💼</span>
+              <div><div class="clink-label">LinkedIn</div><div class="clink-val">linkedin.com/in/abhishek-ozha</div></div>
+              <span class="clink-arrow">↗</span>
+            </a>
+            <div class="clink">
+              <span class="clink-icon">📍</span>
+              <div><div class="clink-label">Location</div><div class="clink-val">Biratnagar, Province No. 1, Nepal</div></div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="form reveal">
-        <div class="field">
-          <label>Your Name</label>
-          <input type="text" id="name" placeholder="Your name" />
+        <div class="contact-form sc-reveal">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="f-name" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="f-email" placeholder="you@example.com" />
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" id="f-subject" placeholder="Project inquiry / Collaboration…" />
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="f-msg" placeholder="Tell me about your project…"></textarea>
+          </div>
+          <button class="form-submit mag-btn" onclick="sendForm()">
+            <span>Send Message →</span>
+          </button>
+          <div id="form-status"></div>
         </div>
-        <div class="field">
-          <label>Email</label>
-          <input type="email" id="email" placeholder="you@example.com" />
-        </div>
-        <div class="field">
-          <label>Message</label>
-          <textarea id="msg" placeholder="Hi Abhishek, I'd love to…"></textarea>
-        </div>
-        <button class="form-btn" onclick="sendMsg()">Send Message →</button>
       </div>
-
     </div>
   </section>
 
   <!-- ── FOOTER ── -->
   <footer>
-    <div class="logo">Abhishek<span style="color:var(--accent)">.</span></div>
-    <p>© 2026 Abhishek Ojha · Biratnagar, Nepal</p>
-    <p><a href="https://abhishekojha1.com.np/" style="color:var(--accent);text-decoration:none;">abhishekojha1.com.np</a></p>
+    <div class="container ft-inner">
+      <div class="ft-logo">AO<span>.</span></div>
+      <div class="ft-center">
+        <p>© 2026 Abhishek Ojha</p>
+        <p>Biratnagar, Nepal · Full Stack Developer</p>
+      </div>
+      <a href="#home" class="ft-top mag-btn"><span>↑ Top</span></a>
+    </div>
   </footer>
 
-  <!-- Toast notification -->
-  <div id="toast">Message sent! I'll be in touch soon 🙏</div>
+  <!-- Toast -->
+  <div id="toast">Message sent! I'll get back to you soon 🙏</div>
 
   <script src="script.js"></script>
 </body>
