@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Abhishek Ojha — Full Stack Developer</title>
-  <meta name="description" content="Abhishek Ojha — Full Stack Developer from Biratnagar, Nepal. Building production-grade digital experiences." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
-<body>
-  <!-- Noise overlay -->
-  <div class="noise"></div>
+<body class="is-loading">
 
-  <!-- Custom cursor -->
-  <div id="cur-dot"></div>
-  <div id="cur-outline"></div>
-  <div id="cur-label"></div>
+  <!-- ── LOADER ── -->
+  <div id="loader">
+    <div class="ld-bar-wrap"><div class="ld-bar" id="ldBar"></div></div>
+    <div class="ld-name">ABHISHEK OJHA</div>
+    <div class="ld-role">Full Stack Developer</div>
+    <div class="ld-pct" id="ldPct">0%</div>
+  </div>
 
-  <!-- Scroll progress -->
-  <div id="progress"></div>
+  <!-- Cursor -->
+  <div id="c-dot"></div>
+  <div id="c-ring"></div>
+  <div id="c-txt"></div>
+
+  <!-- Progress -->
+  <div id="prog-bar"></div>
 
   <!-- ── NAV ── -->
   <nav id="nav">
-    <a href="#home" class="nav-logo">AO<span class="logo-dot">.</span></a>
-    <div class="nav-center">
-      <a href="#about"    class="nav-link" data-label="About">About</a>
-      <a href="#skills"   class="nav-link" data-label="Skills">Skills</a>
-      <a href="#projects" class="nav-link" data-label="Work">Work</a>
-      <a href="#contact"  class="nav-link" data-label="Contact">Contact</a>
+    <a href="#home" class="nav-wm">AO<em>.</em></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about"    class="nl">About</a>
+      <a href="#skills"   class="nl">Skills</a>
+      <a href="#projects" class="nl">Work</a>
+      <a href="#contact"  class="nl">Contact</a>
     </div>
-    <a href="#contact" class="nav-cta mag-btn">
-      <span>Hire Me</span>
-    </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span>
-    </button>
+    <a href="#contact" class="nav-hire mag">Hire Me</a>
+    <button class="burger" id="burger"><span></span><span></span></button>
   </nav>
 
   <!-- Mobile menu -->
@@ -44,411 +45,323 @@
     <a href="#skills"   onclick="closeMob()">Skills</a>
     <a href="#projects" onclick="closeMob()">Work</a>
     <a href="#contact"  onclick="closeMob()">Contact</a>
-    <div class="mob-meta">Biratnagar, Nepal · Open to opportunities</div>
+    <small>Biratnagar, Nepal · Open to Remote</small>
   </div>
 
   <!-- ── HERO ── -->
-  <section class="hero" id="home">
-    <!-- Shader background canvas -->
-    <canvas id="heroCanvas"></canvas>
-    <!-- Grid overlay -->
-    <div class="hero-grid-overlay"></div>
+  <section id="home" class="hero">
+    <canvas id="atmos"></canvas>
+    <div class="hero-noise"></div>
 
-    <div class="hero-content">
-      <div class="hero-chip reveal-chip">
-        <span class="chip-dot"></span>Available for projects
+    <!-- Vertical side label (Thorgal style) -->
+    <div class="side-tag">
+      <span>F·U·L·L</span>
+      <div class="st-line"></div>
+      <span>S·T·A·C·K</span>
+    </div>
+
+    <div class="hero-body">
+      <div class="hero-chip" id="hChip">
+        <span class="hc-dot"></span>Available for projects
       </div>
 
-      <h1 class="hero-h1">
-        <div class="line-mask"><span class="reveal-line" style="transition-delay:.1s">Full&#8202;Stack</span></div>
-        <div class="line-mask"><em class="reveal-line" style="transition-delay:.22s">Developer</em></div>
-        <div class="line-mask"><span class="reveal-line" style="transition-delay:.34s">&amp; Creator</span></div>
+      <h1 class="hero-h1" id="heroH1">
+        <div class="hline-wrap"><div class="hline" id="hl1">BUILDING</div></div>
+        <div class="hline-wrap"><div class="hline italic" id="hl2">Digital</div></div>
+        <div class="hline-wrap"><div class="hline" id="hl3">FUTURES</div></div>
       </h1>
 
-      <p class="hero-sub reveal-fade" style="transition-delay:.55s">
-        Crafting production-grade digital experiences<br>from <strong>Biratnagar, Nepal</strong> — clean, bold &amp; built to last.
-      </p>
-
-      <div class="hero-btns reveal-fade" style="transition-delay:.7s">
-        <a href="https://abhishekojha1.com.np/" target="_blank" class="btn-glass mag-btn">
-          <span>View Portfolio ↗</span>
-        </a>
-        <a href="#projects" class="btn-text mag-btn">
-          <span>See Work</span>
-          <svg width="18" height="18" viewBox="0 0 18 18"><path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
-      <div class="hero-meta reveal-fade" style="transition-delay:.85s">
-        <div class="meta-item"><span class="meta-n counter" data-to="3">0</span><span class="meta-label">Yrs Exp</span></div>
-        <div class="meta-sep"></div>
-        <div class="meta-item"><span class="meta-n counter" data-to="4">0</span><span class="meta-label">Prod Apps</span></div>
-        <div class="meta-sep"></div>
-        <div class="meta-item"><span class="meta-n counter" data-to="50">0</span><span class="meta-label">Projects</span></div>
+      <div class="hero-foot">
+        <p class="hero-sub" id="hSub">
+          Full Stack Developer from <strong>Biratnagar, Nepal</strong><br>
+          crafting production-grade web &amp; mobile experiences.
+        </p>
+        <div class="hero-acts" id="hActs">
+          <a href="https://abhishekojha1.com.np/" target="_blank" class="ha-outline mag">
+            <span>View Portfolio ↗</span>
+          </a>
+          <a href="#projects" class="ha-ghost mag">
+            <span>See Work</span>
+            <svg viewBox="0 0 18 18" width="16" height="16"><path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
       </div>
     </div>
 
-    <!-- Floating badges -->
-    <div class="hero-badges">
-      <div class="badge badge1 float-anim">React</div>
-      <div class="badge badge2 float-anim" style="animation-delay:-.8s">Django</div>
-      <div class="badge badge3 float-anim" style="animation-delay:-1.6s">AWS</div>
-      <div class="badge badge4 float-anim" style="animation-delay:-.4s">PostgreSQL</div>
+    <!-- Stats strip at bottom -->
+    <div class="hero-stats" id="hStats">
+      <div class="hs-item">
+        <span class="hs-n counter" data-to="3">0</span><sup>+</sup>
+        <span class="hs-l">Years Exp</span>
+      </div>
+      <div class="hs-sep"></div>
+      <div class="hs-item">
+        <span class="hs-n counter" data-to="4">0</span><sup>+</sup>
+        <span class="hs-l">Prod Apps</span>
+      </div>
+      <div class="hs-sep"></div>
+      <div class="hs-item">
+        <span class="hs-n counter" data-to="50">0</span><sup>+</sup>
+        <span class="hs-l">Projects</span>
+      </div>
+      <div class="hs-sep"></div>
+      <div class="hs-item">
+        <span class="hs-n">100</span><sup>%</sup>
+        <span class="hs-l">Commitment</span>
+      </div>
     </div>
 
-    <div class="hero-scroll-hint">
-      <div class="scroll-line"></div>
-      <span>scroll</span>
+    <div class="scroll-hint">
+      <div class="sh-line"></div>
+      <span>SCROLL</span>
     </div>
   </section>
 
   <!-- ── MARQUEE ── -->
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <span>React</span><span class="mx-dot">✦</span>
-      <span>Django</span><span class="mx-dot">✦</span>
-      <span>AWS</span><span class="mx-dot">✦</span>
-      <span>Full Stack</span><span class="mx-dot">✦</span>
-      <span>PostgreSQL</span><span class="mx-dot">✦</span>
-      <span>Node.js</span><span class="mx-dot">✦</span>
-      <span>React Native</span><span class="mx-dot">✦</span>
-      <span>Python</span><span class="mx-dot">✦</span>
-      <span>CI/CD</span><span class="mx-dot">✦</span>
-      <span>REST APIs</span><span class="mx-dot">✦</span>
-      <!-- duplicate for seamless loop -->
-      <span>React</span><span class="mx-dot">✦</span>
-      <span>Django</span><span class="mx-dot">✦</span>
-      <span>AWS</span><span class="mx-dot">✦</span>
-      <span>Full Stack</span><span class="mx-dot">✦</span>
-      <span>PostgreSQL</span><span class="mx-dot">✦</span>
-      <span>Node.js</span><span class="mx-dot">✦</span>
-      <span>React Native</span><span class="mx-dot">✦</span>
-      <span>Python</span><span class="mx-dot">✦</span>
-      <span>CI/CD</span><span class="mx-dot">✦</span>
-      <span>REST APIs</span><span class="mx-dot">✦</span>
+  <div class="marquee-band">
+    <div class="mq-track">
+      <span>React</span><em>✦</em><span>Django</span><em>✦</em><span>Python</span><em>✦</em>
+      <span>AWS</span><em>✦</em><span>PostgreSQL</span><em>✦</em><span>Node.js</span><em>✦</em>
+      <span>React Native</span><em>✦</em><span>Full Stack</span><em>✦</em><span>CI/CD</span><em>✦</em>
+      <span>REST APIs</span><em>✦</em>
+      <span>React</span><em>✦</em><span>Django</span><em>✦</em><span>Python</span><em>✦</em>
+      <span>AWS</span><em>✦</em><span>PostgreSQL</span><em>✦</em><span>Node.js</span><em>✦</em>
+      <span>React Native</span><em>✦</em><span>Full Stack</span><em>✦</em><span>CI/CD</span><em>✦</em>
+      <span>REST APIs</span><em>✦</em>
     </div>
   </div>
 
   <!-- ── ABOUT ── -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="sec-label sc-reveal">01 — About</div>
+  <section id="about" class="about">
+    <div class="sec-inner">
+      <div class="sec-label gsap-up">01 — About</div>
       <div class="about-grid">
-        <div class="about-left sc-reveal">
-          <h2 class="sec-h2">Building things<br><em>that actually ship.</em></h2>
-        </div>
-        <div class="about-right sc-reveal">
-          <p>I'm <strong>Abhishek Ojha</strong> — a full-stack developer based in <strong>Biratnagar, Province No. 1, Nepal</strong>. I design and build end-to-end web and mobile products that are fast, maintainable, and production-ready.</p>
-          <p>I've shipped real-world apps across healthcare, fitness, and enterprise sectors — including NDIS disability support platforms in Australia, ShiftCare workforce integration, and mobile fitness apps for international clients.</p>
-          <p>I obsess over the details — from system architecture to pixel-level polish — because I believe the best software is invisible to its users.</p>
-          <div class="about-tags">
-            <span>Biratnagar, Nepal</span>
-            <span>Open to Remote</span>
-            <span>Freelance & FT</span>
+        <div class="about-left">
+          <h2 class="sec-h2 gsap-up">
+            I build things<br><em>that actually</em><br>ship.
+          </h2>
+          <div class="about-photo gsap-up">
+            <div class="ap-placeholder"><span>AO</span></div>
+            <div class="ap-ring"></div>
+            <p class="ap-caption">Biratnagar, Nepal</p>
           </div>
         </div>
-      </div>
-
-      <!-- About cards -->
-      <div class="about-cards">
-        <div class="acard sc-reveal" style="--delay:.0s">
-          <div class="acard-icon">🏗️</div>
-          <div class="acard-title">Architecture First</div>
-          <div class="acard-desc">Systems designed to scale, not just to ship.</div>
-        </div>
-        <div class="acard sc-reveal" style="--delay:.08s">
-          <div class="acard-icon">⚡</div>
-          <div class="acard-title">Performance Obsessed</div>
-          <div class="acard-desc">Every millisecond matters in production.</div>
-        </div>
-        <div class="acard sc-reveal" style="--delay:.16s">
-          <div class="acard-icon">🌍</div>
-          <div class="acard-title">Global Clients</div>
-          <div class="acard-desc">Delivered for AU, US, and local enterprises.</div>
-        </div>
-        <div class="acard sc-reveal" style="--delay:.24s">
-          <div class="acard-icon">🔒</div>
-          <div class="acard-title">Security Minded</div>
-          <div class="acard-desc">Auth, RBAC, and compliance baked in from day one.</div>
+        <div class="about-right">
+          <p class="about-lead gsap-up">
+            I'm <strong>Abhishek Ojha</strong> — a full-stack developer who builds
+            production-grade web &amp; mobile products from <strong>Biratnagar, Province No.&nbsp;1, Nepal</strong>.
+          </p>
+          <p class="about-p gsap-up">
+            I've shipped real applications across healthcare, fitness, and enterprise —
+            including an NDIS disability support platform for Australian clients,
+            ShiftCare workforce integration, and cross-platform mobile fitness apps.
+          </p>
+          <p class="about-p gsap-up">
+            I obsess over architecture, performance, and the details that separate
+            good software from great software.
+          </p>
+          <div class="about-pills gsap-up">
+            <span>Open to Remote</span><span>Freelance</span>
+            <span>Full-Time Roles</span><span>Biratnagar, Nepal</span>
+          </div>
+          <div class="about-nums gsap-up">
+            <div class="an"><span class="an-n">3+</span><span class="an-l">Years of real-world shipping</span></div>
+            <div class="an"><span class="an-n">AU</span><span class="an-l">International client delivery</span></div>
+            <div class="an"><span class="an-n">∞</span><span class="an-l">Obsession with clean code</span></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ── SKILLS ── -->
-  <section class="skills" id="skills">
-    <div class="container">
-      <div class="sec-label sc-reveal">02 — Skills</div>
-      <h2 class="sec-h2 sc-reveal">What I work with<em>.</em></h2>
-
-      <div class="skills-grid">
-        <div class="skill-row sc-reveal" style="--delay:.0s" data-pct="88">
-          <div class="sk-left">
-            <span class="sk-icon">🌐</span>
-            <div>
-              <div class="sk-name">Web Development</div>
-              <div class="sk-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-            </div>
-          </div>
-          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill"></div></div><span class="sk-pct">88%</span></div>
-        </div>
-
-        <div class="skill-row sc-reveal" style="--delay:.06s" data-pct="78">
-          <div class="sk-left">
-            <span class="sk-icon">⚛️</span>
-            <div>
-              <div class="sk-name">React &amp; React Native</div>
-              <div class="sk-tags"><span>Hooks</span><span>Redux</span><span>Mobile</span></div>
-            </div>
-          </div>
-          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill"></div></div><span class="sk-pct">78%</span></div>
-        </div>
-
-        <div class="skill-row sc-reveal" style="--delay:.12s" data-pct="82">
-          <div class="sk-left">
-            <span class="sk-icon">🐍</span>
-            <div>
-              <div class="sk-name">Python / Django</div>
-              <div class="sk-tags"><span>DRF</span><span>Celery</span><span>Auth</span></div>
-            </div>
-          </div>
-          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill"></div></div><span class="sk-pct">82%</span></div>
-        </div>
-
-        <div class="skill-row sc-reveal" style="--delay:.18s" data-pct="75">
-          <div class="sk-left">
-            <span class="sk-icon">☁️</span>
-            <div>
-              <div class="sk-name">AWS &amp; Cloud</div>
-              <div class="sk-tags"><span>EC2</span><span>S3</span><span>RDS</span></div>
-            </div>
-          </div>
-          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill"></div></div><span class="sk-pct">75%</span></div>
-        </div>
-
-        <div class="skill-row sc-reveal" style="--delay:.24s" data-pct="85">
-          <div class="sk-left">
-            <span class="sk-icon">🗄️</span>
-            <div>
-              <div class="sk-name">Databases</div>
-              <div class="sk-tags"><span>PostgreSQL</span><span>MySQL</span><span>Redis</span></div>
-            </div>
-          </div>
-          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill"></div></div><span class="sk-pct">85%</span></div>
-        </div>
-
-        <div class="skill-row sc-reveal" style="--delay:.30s" data-pct="90">
-          <div class="sk-left">
-            <span class="sk-icon">🔧</span>
-            <div>
-              <div class="sk-name">Dev Tools &amp; CI/CD</div>
-              <div class="sk-tags"><span>Git</span><span>GitHub Actions</span><span>Docker</span></div>
-            </div>
-          </div>
-          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill"></div></div><span class="sk-pct">90%</span></div>
-        </div>
+  <section id="skills" class="skills">
+    <div class="sec-inner">
+      <div class="sec-label gsap-up">02 — Skills</div>
+      <div class="skills-top">
+        <h2 class="sec-h2 gsap-up">What I<br><em>work with</em><br>every day.</h2>
+        <p class="skills-sub gsap-up">Technologies I use to build scalable, production-ready systems.</p>
       </div>
-
-      <!-- Tech orbit display -->
-      <div class="tech-orbit-wrap sc-reveal">
-        <div class="tech-orbit">
-          <div class="orbit-center"><span>Stack</span></div>
-          <div class="orbit-ring r1">
-            <div class="orbit-chip" style="--a:0deg">React</div>
-            <div class="orbit-chip" style="--a:120deg">Django</div>
-            <div class="orbit-chip" style="--a:240deg">AWS</div>
+      <div class="skills-rows">
+        <div class="sk-row gsap-up" data-pct="88">
+          <div class="sk-info">
+            <span class="sk-idx">01</span>
+            <div><div class="sk-nm">Web Development</div><div class="sk-tg">HTML · CSS · JavaScript</div></div>
           </div>
-          <div class="orbit-ring r2">
-            <div class="orbit-chip" style="--a:60deg">PostgreSQL</div>
-            <div class="orbit-chip" style="--a:180deg">Node.js</div>
-            <div class="orbit-chip" style="--a:300deg">Python</div>
+          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill" style="width:0"></div></div></div>
+          <span class="sk-pct">88%</span>
+        </div>
+        <div class="sk-row gsap-up" data-pct="80">
+          <div class="sk-info">
+            <span class="sk-idx">02</span>
+            <div><div class="sk-nm">React &amp; React Native</div><div class="sk-tg">Hooks · Redux · Mobile</div></div>
           </div>
+          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill" style="width:0"></div></div></div>
+          <span class="sk-pct">80%</span>
+        </div>
+        <div class="sk-row gsap-up" data-pct="83">
+          <div class="sk-info">
+            <span class="sk-idx">03</span>
+            <div><div class="sk-nm">Python / Django</div><div class="sk-tg">DRF · Celery · Auth</div></div>
+          </div>
+          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill" style="width:0"></div></div></div>
+          <span class="sk-pct">83%</span>
+        </div>
+        <div class="sk-row gsap-up" data-pct="76">
+          <div class="sk-info">
+            <span class="sk-idx">04</span>
+            <div><div class="sk-nm">AWS &amp; Cloud</div><div class="sk-tg">EC2 · S3 · RDS · Lambda</div></div>
+          </div>
+          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill" style="width:0"></div></div></div>
+          <span class="sk-pct">76%</span>
+        </div>
+        <div class="sk-row gsap-up" data-pct="85">
+          <div class="sk-info">
+            <span class="sk-idx">05</span>
+            <div><div class="sk-nm">Databases</div><div class="sk-tg">PostgreSQL · MySQL · Redis</div></div>
+          </div>
+          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill" style="width:0"></div></div></div>
+          <span class="sk-pct">85%</span>
+        </div>
+        <div class="sk-row gsap-up" data-pct="90">
+          <div class="sk-info">
+            <span class="sk-idx">06</span>
+            <div><div class="sk-nm">DevOps &amp; CI/CD</div><div class="sk-tg">Git · Docker · GitHub Actions</div></div>
+          </div>
+          <div class="sk-bar-wrap"><div class="sk-bar"><div class="sk-fill" style="width:0"></div></div></div>
+          <span class="sk-pct">90%</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ── PROJECTS ── -->
-  <section class="projects" id="projects">
-    <div class="container">
-      <div class="sec-label sc-reveal">03 — Work</div>
-      <h2 class="sec-h2 sc-reveal">Selected Projects<em>.</em></h2>
+  <section id="projects" class="projects">
+    <div class="sec-inner">
+      <div class="sec-label gsap-up">03 — Work</div>
+      <h2 class="sec-h2 gsap-up">Selected<br><em>Projects.</em></h2>
     </div>
 
-    <!-- Horizontal scroll strip -->
-    <div class="proj-track-wrap">
-      <div class="proj-track" id="projTrack">
-
-        <div class="proj-card pcard-featured sc-reveal" style="--delay:.0s">
-          <div class="proj-card-inner">
-            <div class="proj-num">01</div>
-            <div class="proj-eyebrow">Web &amp; Mobile · Australia</div>
-            <div class="proj-name">NDIS Disability<br>Support Platform</div>
-            <p class="proj-body">Comprehensive platform for NDIS in Australia — participant management, service bookings, progress tracking, and full ShiftCare workforce integration. Production-grade with CI/CD pipelines.</p>
-            <div class="proj-stack">
-              <span>React</span><span>Python</span><span>Django</span><span>PostgreSQL</span><span>AWS</span>
-            </div>
-            <a href="#contact" class="proj-cta mag-btn"><span>Get Details →</span></a>
+    <!-- Featured project — full width cinematic -->
+    <div class="proj-feat gsap-up">
+      <div class="pf-art">
+        <div class="pf-browser">
+          <div class="pf-bar">
+            <div class="pd dr"></div><div class="pd dy"></div><div class="pd dg"></div>
+            <span class="pf-url">empowerliving.com.au</span>
           </div>
-          <div class="proj-card-art">
-            <div class="art-browser">
-              <div class="art-bar">
-                <div class="art-dot dr"></div><div class="art-dot dy"></div><div class="art-dot dg"></div>
-                <div class="art-url">empowerliving.com.au</div>
+          <div class="pf-body">
+            <div class="pf-side"></div>
+            <div class="pf-main">
+              <div class="pf-line accent w70"></div>
+              <div class="pf-line w45"></div>
+              <div class="pf-kpis">
+                <div class="pf-kpi"><b>124</b><small>Participants</small></div>
+                <div class="pf-kpi"><b>98%</b><small>Uptime</small></div>
+                <div class="pf-kpi"><b>2.1k</b><small>Bookings</small></div>
               </div>
-              <div class="art-body">
-                <div class="art-sidebar"></div>
-                <div class="art-main">
-                  <div class="art-line w80 accent"></div>
-                  <div class="art-line w55"></div>
-                  <div class="art-card-block">
-                    <div class="art-kpi"><span class="kpi-n">124</span><span class="kpi-l">Participants</span></div>
-                    <div class="art-kpi"><span class="kpi-n">98%</span><span class="kpi-l">Uptime</span></div>
-                    <div class="art-kpi"><span class="kpi-n">2.1k</span><span class="kpi-l">Bookings</span></div>
-                  </div>
-                  <div class="art-line w90"></div>
-                  <div class="art-line w70"></div>
-                </div>
-              </div>
+              <div class="pf-line w90"></div>
+              <div class="pf-line w60"></div>
             </div>
           </div>
         </div>
-
-        <div class="proj-card sc-reveal" style="--delay:.06s">
-          <div class="proj-card-inner">
-            <div class="proj-num">02</div>
-            <div class="proj-eyebrow">Automation · Forms</div>
-            <div class="proj-name">SMS Sender &amp;<br>Form System</div>
-            <p class="proj-body">Smart SMS automation with JotForm signature collection, dynamic form builder, and bulk message delivery. Real-time delivery tracking with webhook integrations.</p>
-            <div class="proj-stack">
-              <span>JotForm</span><span>SMS API</span><span>JavaScript</span><span>Webhooks</span>
-            </div>
-            <a href="#contact" class="proj-cta mag-btn"><span>Get Details →</span></a>
-          </div>
-          <div class="proj-card-art">
-            <div class="art-terminal">
-              <div class="art-bar">
-                <div class="art-dot dr"></div><div class="art-dot dy"></div><div class="art-dot dg"></div>
-                <span style="color:#666;font-size:.65rem;margin-left:.5rem">~/sms-system</span>
-              </div>
-              <div class="art-term-body">
-                <div class="tline"><span class="tg">✓</span> Form submitted</div>
-                <div class="tline"><span class="tm">→</span> <span class="to">Signing</span> document…</div>
-                <div class="tline"><span class="tg">✓</span> Signature captured</div>
-                <div class="tline"><span class="tm">→</span> <span class="tb">SMS</span> sending +61…</div>
-                <div class="tline"><span class="tg">✓</span> Delivered <span class="tm">198ms</span></div>
-                <div class="tline"><span class="tg">➜</span> <span class="t-blink">_</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="proj-card sc-reveal" style="--delay:.12s">
-          <div class="proj-card-inner">
-            <div class="proj-num">03</div>
-            <div class="proj-eyebrow">Mobile App · Fitness</div>
-            <div class="proj-name">Gym &amp; Fitness<br>Tracker</div>
-            <p class="proj-body">Full-featured fitness tracking app with workout plans, progress analytics, exercise libraries, and trainer-client management. Cross-platform for iOS and Android.</p>
-            <div class="proj-stack">
-              <span>React Native</span><span>Java</span><span>PostgreSQL</span><span>REST API</span>
-            </div>
-            <a href="#contact" class="proj-cta mag-btn"><span>Get Details →</span></a>
-          </div>
-          <div class="proj-card-art art-mobile-wrap">
-            <div class="art-phone">
-              <div class="art-phone-screen">
-                <div class="phone-top-bar">Fitness</div>
-                <div class="phone-ring-wrap">
-                  <svg viewBox="0 0 80 80" width="80" height="80">
-                    <circle cx="40" cy="40" r="32" fill="none" stroke="#1f2937" stroke-width="6"/>
-                    <circle cx="40" cy="40" r="32" fill="none" stroke="var(--accent)" stroke-width="6" stroke-dasharray="140 60" stroke-dashoffset="30" stroke-linecap="round"/>
-                    <text x="40" y="44" text-anchor="middle" fill="#fff" font-size="11" font-family="DM Mono">70%</text>
-                  </svg>
-                </div>
-                <div class="phone-stats">
-                  <div class="ph-s"><span>🔥</span>2,400 cal</div>
-                  <div class="ph-s"><span>⚡</span>48 min</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CTA card -->
-        <div class="proj-card proj-cta-card sc-reveal" style="--delay:.18s">
-          <div class="cta-card-inner">
-            <div class="cta-heading">Got a project<br><em>in mind?</em></div>
-            <p>Open to freelance, collaboration, and full-time roles. Let's build something remarkable together.</p>
-            <a href="#contact" class="btn-glass mag-btn cta-big-btn">
-              <span>Start Conversation →</span>
-            </a>
-          </div>
-        </div>
-
       </div>
-      <div class="proj-drag-hint">← drag to explore →</div>
+      <div class="pf-info">
+        <div class="pf-num">01</div>
+        <div class="pf-cat">Web &amp; Mobile · Australia · Healthcare</div>
+        <h3 class="pf-title">NDIS Disability<br>Support Platform</h3>
+        <p class="pf-desc">Comprehensive platform for the National Disability Insurance Scheme in Australia — participant management, service bookings, progress tracking, and full ShiftCare workforce integration. Production-grade with zero-downtime CI/CD.</p>
+        <div class="proj-chips"><span>React</span><span>Python</span><span>Django</span><span>PostgreSQL</span><span>AWS</span></div>
+        <a href="#contact" class="proj-cta mag"><span>Get Details →</span></a>
+      </div>
+    </div>
+
+    <!-- Two cards + CTA -->
+    <div class="proj-grid">
+      <div class="pg-card gsap-up">
+        <div class="pgc-head">
+          <span class="pgc-n">02</span>
+          <span class="pgc-c">Automation · Forms</span>
+        </div>
+        <div class="pgc-art terminal-mock">
+          <div class="tm-line"><span class="tg">✓</span> Form submitted</div>
+          <div class="tm-line"><span class="tm2">→</span> <span class="to">Signing</span> document…</div>
+          <div class="tm-line"><span class="tg">✓</span> Signature captured</div>
+          <div class="tm-line"><span class="tm2">→</span> <span class="tb">SMS</span> sending +61…</div>
+          <div class="tm-line"><span class="tg">✓</span> Delivered <span class="tm2">198ms</span></div>
+          <div class="tm-line"><span class="tg">➜</span> <span class="t-blink">_</span></div>
+        </div>
+        <h3 class="pgc-title">SMS Sender &amp;<br>Form System</h3>
+        <p class="pgc-desc">Smart SMS automation with JotForm signature collection, dynamic form builder, and real-time webhook delivery tracking.</p>
+        <div class="proj-chips sm"><span>JotForm</span><span>SMS API</span><span>JavaScript</span></div>
+        <a href="#contact" class="pgc-link">Details →</a>
+      </div>
+
+      <div class="pg-card gsap-up">
+        <div class="pgc-head">
+          <span class="pgc-n">03</span>
+          <span class="pgc-c">Mobile · Fitness</span>
+        </div>
+        <div class="pgc-art phone-mock">
+          <div class="pm-body">
+            <svg viewBox="0 0 80 80" width="68" height="68">
+              <circle cx="40" cy="40" r="31" fill="none" stroke="#1f2937" stroke-width="6"/>
+              <circle cx="40" cy="40" r="31" fill="none" stroke="var(--acc)" stroke-width="6"
+                stroke-dasharray="135 60" stroke-dashoffset="28" stroke-linecap="round"/>
+              <text x="40" y="44" text-anchor="middle" fill="#fff" font-size="11" font-family="Barlow">70%</text>
+            </svg>
+            <div class="pm-stats"><span>🔥 2,400 cal</span><span>⚡ 48 min</span></div>
+          </div>
+        </div>
+        <h3 class="pgc-title">Gym &amp; Fitness<br>Tracker</h3>
+        <p class="pgc-desc">Cross-platform fitness app with workout plans, progress analytics, exercise libraries, and trainer-client management for iOS &amp; Android.</p>
+        <div class="proj-chips sm"><span>React Native</span><span>Java</span><span>PostgreSQL</span></div>
+        <a href="#contact" class="pgc-link">Details →</a>
+      </div>
+
+      <div class="pg-card pg-cta-card gsap-up">
+        <h3>Got a<br>project<br><em>in mind?</em></h3>
+        <p>Open to freelance, collaboration &amp; full-time opportunities.</p>
+        <a href="#contact" class="proj-cta mag"><span>Start a Conversation →</span></a>
+      </div>
     </div>
   </section>
 
   <!-- ── CONTACT ── -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="sec-label sc-reveal">04 — Contact</div>
-      <h2 class="sec-h2 sc-reveal">Let's build<br><em>something great.</em></h2>
-
+  <section id="contact" class="contact">
+    <div class="sec-inner">
+      <div class="sec-label gsap-up">04 — Contact</div>
+      <h2 class="sec-h2 gsap-up">Let's build<br><em>something</em><br>great.</h2>
       <div class="contact-grid">
-        <div class="contact-left sc-reveal">
-          <p class="contact-desc">Have a project in mind or just want to talk tech? I respond within 24 hours.</p>
-
-          <div class="clinks">
-            <a href="https://abhishekojha1.com.np/" class="clink mag-btn" target="_blank">
-              <span class="clink-icon">🌐</span>
-              <div><div class="clink-label">Portfolio</div><div class="clink-val">abhishekojha1.com.np</div></div>
-              <span class="clink-arrow">↗</span>
+        <div class="contact-left gsap-up">
+          <p class="contact-lede">Have a project or just want to talk tech? I respond within 24 hours.</p>
+          <div class="cl-list">
+            <a href="https://abhishekojha1.com.np/" target="_blank" class="cl-item mag">
+              <span class="cli-label">Portfolio</span><span class="cli-val">abhishekojha1.com.np ↗</span>
             </a>
-            <a href="mailto:abhishekojha.work@gmail.com" class="clink mag-btn">
-              <span class="clink-icon">✉️</span>
-              <div><div class="clink-label">Email</div><div class="clink-val">abhishekojha.work@gmail.com</div></div>
-              <span class="clink-arrow">↗</span>
+            <a href="mailto:abhishekojha.work@gmail.com" class="cl-item mag">
+              <span class="cli-label">Email</span><span class="cli-val">abhishekojha.work@gmail.com ↗</span>
             </a>
-            <a href="https://github.com/AbhishekOzha" class="clink mag-btn" target="_blank">
-              <span class="clink-icon">🐱</span>
-              <div><div class="clink-label">GitHub</div><div class="clink-val">github.com/AbhishekOzha</div></div>
-              <span class="clink-arrow">↗</span>
+            <a href="https://github.com/AbhishekOzha" target="_blank" class="cl-item mag">
+              <span class="cli-label">GitHub</span><span class="cli-val">AbhishekOzha ↗</span>
             </a>
-            <a href="https://www.linkedin.com/in/abhishek-ozha/" class="clink mag-btn" target="_blank">
-              <span class="clink-icon">💼</span>
-              <div><div class="clink-label">LinkedIn</div><div class="clink-val">linkedin.com/in/abhishek-ozha</div></div>
-              <span class="clink-arrow">↗</span>
+            <a href="https://www.linkedin.com/in/abhishek-ozha/" target="_blank" class="cl-item mag">
+              <span class="cli-label">LinkedIn</span><span class="cli-val">abhishek-ozha ↗</span>
             </a>
-            <div class="clink">
-              <span class="clink-icon">📍</span>
-              <div><div class="clink-label">Location</div><div class="clink-val">Biratnagar, Province No. 1, Nepal</div></div>
+            <div class="cl-item">
+              <span class="cli-label">Location</span><span class="cli-val">Biratnagar, Province No. 1, Nepal</span>
             </div>
           </div>
         </div>
-
-        <div class="contact-form sc-reveal">
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" id="f-name" placeholder="Your name" />
+        <div class="contact-form gsap-up">
+          <div class="cf-row">
+            <div class="cf-field"><label>Name</label><input id="fn" type="text" placeholder="Your name"/></div>
+            <div class="cf-field"><label>Email</label><input id="fe" type="email" placeholder="you@example.com"/></div>
           </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" id="f-email" placeholder="you@example.com" />
-          </div>
-          <div class="form-group">
-            <label>Subject</label>
-            <input type="text" id="f-subject" placeholder="Project inquiry / Collaboration…" />
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea id="f-msg" placeholder="Tell me about your project…"></textarea>
-          </div>
-          <button class="form-submit mag-btn" onclick="sendForm()">
-            <span>Send Message →</span>
-          </button>
-          <div id="form-status"></div>
+          <div class="cf-field"><label>Subject</label><input id="fs" type="text" placeholder="Project / hire / collab…"/></div>
+          <div class="cf-field"><label>Message</label><textarea id="fm" placeholder="Tell me about your project…"></textarea></div>
+          <button class="cf-btn mag" onclick="sendForm()"><span>Send Message →</span></button>
+          <div id="cf-status"></div>
         </div>
       </div>
     </div>
@@ -456,19 +369,21 @@
 
   <!-- ── FOOTER ── -->
   <footer>
-    <div class="container ft-inner">
-      <div class="ft-logo">AO<span>.</span></div>
-      <div class="ft-center">
-        <p>© 2026 Abhishek Ojha</p>
-        <p>Biratnagar, Nepal · Full Stack Developer</p>
+    <div class="ft">
+      <div class="ft-logo">AO<em>.</em></div>
+      <div class="ft-mid">
+        <p>© 2026 Abhishek Ojha · Biratnagar, Nepal</p>
+        <p>Full Stack Developer · Open to Opportunities</p>
       </div>
-      <a href="#home" class="ft-top mag-btn"><span>↑ Top</span></a>
+      <a href="#home" class="ft-top mag"><span>↑ Back to top</span></a>
     </div>
   </footer>
 
-  <!-- Toast -->
-  <div id="toast">Message sent! I'll get back to you soon 🙏</div>
+  <div id="toast">Message sent — I'll be in touch soon 🙏</div>
 
+  <!-- Lenis + GSAP via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
