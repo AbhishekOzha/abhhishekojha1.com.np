@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>吴衍 — WÚ YǍN / 生成艺术家</title>
+<title>Abhishek Ojha — Full Stack Developer · Nepal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;500;700;900&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@300;500;900&display=swap" rel="stylesheet">
@@ -124,6 +124,10 @@
   .role .cn{ color:var(--paper); font-weight:500 }
   .tagline{ margin-top:18px; font-size:clamp(15px,1.5vw,18px); color:var(--steel); max-width:40ch }
   .tagline .cn{ color:var(--bone) }
+  h1.name.en .han{ font-family:var(--disp); letter-spacing:-.01em; font-size:clamp(96px,19vw,250px) }
+  .contact .links{ display:flex; gap:22px; flex-wrap:wrap; margin-top:20px }
+  .contact .links a{ color:var(--steel); text-decoration:none; font-size:12px; letter-spacing:.14em; font-family:var(--mono); transition:color .2s }
+  .contact .links a:hover{ color:var(--paper) }
   /* small hero CTA buttons */
   .cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:26px; pointer-events:auto }
   .cta .btn{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
@@ -185,7 +189,7 @@
     display:flex; align-items:center; gap:14px; margin-bottom:22px }
   .p-index .ln{ flex:1; height:1px; background:var(--line); max-width:80px }
   .p-title{ display:flex; align-items:flex-end; gap:18px; flex-wrap:wrap; margin-bottom:8px }
-  .p-han{ font-family:var(--cn); font-weight:900; font-size:clamp(56px,8vw,112px); line-height:.84;
+  .p-han{ font-family:var(--disp); font-weight:900; font-size:clamp(56px,8vw,112px); line-height:.84;
     letter-spacing:.02em }
   .p-en{ font-weight:700; font-size:clamp(15px,1.5vw,18px); letter-spacing:.28em; text-transform:uppercase;
     color:var(--bone); padding-bottom:.5em }
@@ -281,34 +285,34 @@
   <div class="screen-frame"></div>
   <div class="horizon"></div>
   <div class="floor"><canvas id="floor"></canvas><div class="floor-fade"></div></div>
-  <div class="plate mono"><span class="cn">个人网页</span> · LIVE FIELD INSTALLATION · 上海</div>
+  <div class="plate mono">LIVE PORTFOLIO · FULL-STACK ENGINEER · BIRATNAGAR, NEPAL</div>
 </div>
 <div class="stage-front" id="stageFront" aria-hidden="true">
   <div class="portrait" id="portrait"><div class="mat"><div class="photo"><img id="portraitImg" alt=""></div></div></div>
 </div>
 
 <div class="tick a"></div><div class="tick b"></div><div class="tick c"></div><div class="tick d"></div>
-<div class="hud tl">吴衍 · WÚ YǍN</div>
+<div class="hud tl">ABHISHEK OJHA · AO</div>
 <div class="hud tr" id="hudClock">—</div>
-<div class="hud bl">SHANGHAI · 上海</div>
-<div class="hud br">MONOCHROME / NO COLOR</div>
+<div class="hud bl">BIRATNAGAR · NEPAL</div>
+<div class="hud br">FULL STACK · NEPAL</div>
 
 <main>
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="wrap">
       <div class="id-stack">
-        <div class="eyebrow mono"><span class="dot"></span>场 · 运行中 — RECURSIVE WEAVE</div>
-        <h1 class="name">
-          <span class="han">吴衍</span>
-          <span class="lat">WÚ&nbsp;YǍN</span>
+        <div class="eyebrow mono"><span class="dot"></span>AVAILABLE FOR PROJECTS — FULL STACK DEVELOPER</div>
+        <h1 class="name en">
+          <span class="han">AO</span>
+          <span class="lat">ABHISHEK&nbsp;OJHA</span>
         </h1>
-        <p class="role"><span class="cn">生成艺术家 · 创意技术专家</span><br>Generative artist &amp; creative technologist</p>
-        <p class="tagline"><span class="cn">我建造你能走进去的场。</span><br>I build fields you can walk inside — geometry that moves, fractures, and remembers you.</p>
+        <p class="role"><span class="cn">Full Stack Developer</span><br>React · Django · React&nbsp;Native · AWS · PostgreSQL</p>
+        <p class="tagline"><span class="cn">I build systems that ship to production.</span><br>Production-grade web &amp; mobile — from React/Django APIs to AWS infrastructure.</p>
       </div>
     </div>
     <div class="hero-foot">
-      <div class="scrollcue mono"><span class="bar"></span>SCROLL — 进入</div>
+      <div class="scrollcue mono"><span class="bar"></span>SCROLL — EXPLORE</div>
       <div class="seed mono">WEAVE&nbsp;∞ · SEED <b id="seed">0x000000</b></div>
     </div>
   </section>
@@ -318,9 +322,9 @@
     <div class="ghosts" id="ghosts" aria-hidden="true"></div>
     <div class="wrap">
       <div class="manifesto">
-        <p class="m-line rise"><span class="cn">每一个表面，都在等待信号。</span><span class="en">Every surface is a screen waiting for a signal.</span></p>
-        <p class="m-line rise d1"><span class="cn">我不装饰空间——</span><span class="cn">我让它运动、碎裂，并记住你。</span><span class="en">I don't decorate space. I make it move, fracture, and remember you.</span></p>
-        <p class="whisper rise d2">噪 · 形 · 镜 · 衍 — NOISE BECOMES FORM</p>
+        <p class="m-line rise"><span class="cn">Every system starts as a problem worth solving.</span><span class="en">I turn requirements into production software — web, mobile, and the cloud behind them.</span></p>
+        <p class="m-line rise d1"><span class="cn">I don't just write code —</span><span class="cn">I ship it, deploy it, and keep it running.</span><span class="en">Tested, containerised, and live for real users on real infrastructure.</span></p>
+        <p class="whisper rise d2">REACT · DJANGO · AWS — IDEAS BECOME SYSTEMS</p>
       </div>
     </div>
   </section>
@@ -330,8 +334,8 @@
     <div class="wrap">
       <div class="sec-head rise">
         <span class="idx">02</span>
-        <h2><span class="cn">选作</span> — SELECTED WORK</h2>
-        <span class="count" id="workcount">05 PROJECTS</span>
+        <h2>SELECTED WORK — SHIPPED TO PRODUCTION</h2>
+        <span class="count" id="workcount">04 PROJECTS</span>
       </div>
       <div id="projects"></div>
     </div>
@@ -342,28 +346,28 @@
     <div class="wrap">
       <div class="sec-head rise">
         <span class="idx">03</span>
-        <h2><span class="cn">能力 / 履历</span> — CAPABILITY &amp; INDEX</h2>
+        <h2>CAPABILITY &amp; STACK</h2>
       </div>
       <div class="cap-grid">
         <div class="rise">
           <ul class="cap-list">
-            <li><i>RT</i> Real-time graphics — WebGL / GLSL <span class="cn">实时图形</span></li>
-            <li><i>PM</i> Projection mapping — TouchDesigner <span class="cn">投影映射</span></li>
-            <li><i>GN</i> Generative systems <span class="cn">生成系统</span></li>
-            <li><i>CV</i> Computer vision &amp; interaction <span class="cn">计算机视觉</span></li>
-            <li><i>AV</i> Sound-reactive visuals <span class="cn">声音反应</span></li>
-            <li><i>SP</i> Spatial &amp; stage design <span class="cn">空间与舞台</span></li>
+            <li><i>FE</i> Frontend — React · React Native · Angular</li>
+            <li><i>BE</i> Backend — Python · Django · Node.js · Java</li>
+            <li><i>DB</i> Data — PostgreSQL · MySQL · Redis</li>
+            <li><i>CL</i> Cloud — AWS · EC2 · S3 · RDS · Lambda</li>
+            <li><i>OP</i> DevOps — Docker · CI/CD · GitHub Actions</li>
+            <li><i>AP</i> REST APIs · Webhooks · SMS automation</li>
           </ul>
         </div>
         <div class="selected rise d1">
-          <h3>Selected — 展览 / 委托</h3>
+          <h3>Experience — Highlights</h3>
           <ul>
-            <li>West Bund Art &amp; Design <span>2025</span></li>
-            <li>Chronus Art Center, SH <span>2024</span></li>
-            <li>MUTEK · Montréal <span>2024</span></li>
-            <li>ZKM Karlsruhe — residency <span>2023</span></li>
-            <li>teamLab — collaboration <span>2023</span></li>
-            <li>Pace Verso <span>2022</span></li>
+            <li>NDIS Platform — Australia <span>2025</span></li>
+            <li>ShiftCare Integration <span>2024</span></li>
+            <li>Fitness App — Cross-platform <span>2024</span></li>
+            <li>SMS / Webhook Automation <span>2024</span></li>
+            <li>3+ years · 50+ projects <span>·</span></li>
+            <li>Biratnagar, Nepal <span>·</span></li>
           </ul>
         </div>
       </div>
@@ -375,19 +379,24 @@
     <div class="wrap">
       <div class="sec-head rise">
         <span class="idx">04</span>
-        <h2><span class="cn">联系</span> — STAND INSIDE</h2>
+        <h2>GET IN TOUCH</h2>
       </div>
-      <p class="big rise"><span class="cn">现在接受 2026 委托与驻地。</span><span class="en">Available for 2026 commissions, performances &amp; residencies.</span></p>
-      <a class="mail rise d1" href="mailto:yan@wuyan.studio">yan@wuyan.studio</a>
+      <p class="big rise"><span class="cn">Available for projects in 2026.</span><span class="en">Open to freelance, collaboration &amp; full-time roles — worldwide.</span></p>
+      <a class="mail rise d1" href="mailto:abhishekojha.work@gmail.com">abhishekojha.work@gmail.com</a>
+      <div class="links mono d1">
+        <a href="https://github.com/AbhishekOzha" target="_blank" rel="noopener">GITHUB ↗</a>
+        <a href="https://www.linkedin.com/in/abhishek-ozha/" target="_blank" rel="noopener">LINKEDIN ↗</a>
+        <a href="https://abhishekojha1.com.np/" target="_blank" rel="noopener">PORTFOLIO ↗</a>
+      </div>
       <div class="foot">
-        <div class="sig">在自己想象的建筑里。<span class="en">Inside the architecture of one's own imagination</span></div>
-        <div class="mono" style="color:var(--ash)">© 2026 吴衍 / WÚ YǍN · 上海 SHANGHAI</div>
+        <div class="sig">Systems that ship to production.<span class="en">Built from Biratnagar, Nepal</span></div>
+        <div class="mono" style="color:var(--ash)">© 2026 ABHISHEK OJHA · BIRATNAGAR, NEPAL</div>
       </div>
     </div>
   </section>
 </main>
 
-<noscript><div class="noscript">此作品需要 JavaScript 与 WebGL · This piece requires JavaScript &amp; WebGL.</div></noscript>
+<noscript><div class="noscript">This site requires JavaScript &amp; WebGL.</div></noscript>
 
 <script>
 /* ============================================================
@@ -400,21 +409,18 @@ const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- project data ---------- */
 const PROJECTS = [
-  { han:"形", en:"Form Signal", meta:["Installation","Projection mapping","2025"],
-    venue:"West Bund · Shanghai · 12-channel",
-    desc:"A derelict grain silo turned into a breathing lattice — the crowd's motion drives the tessellation across 40 metres of concrete in real time.", seed:11 },
-  { han:"噪", en:"White Static", meta:["Generative system","WebGL","2024"],
-    venue:"Identity · grown per visitor",
-    desc:"An identity that never resolves the same way twice. Every visitor is met by a mark grown out of noise, then collapsed back into it.", seed:29 },
-  { han:"镜", en:"Mirror Field", meta:["Interactive","WebGL","Computer vision","2025"],
-    venue:"Chronus Art Center",
-    desc:"A camera-fed mirror that fractures the viewer into the weave and lets them press back through the surface from the other side.", seed:47 },
-  { han:"衍", en:"Derive", meta:["Generative type","Tool","2023"],
-    venue:"Open-source typeface engine",
-    desc:"A typeface that isn't drawn but grown — glyphs derived by recursive subdivision until legibility tears into geometry.", seed:67 },
-  { han:"黑屏", en:"Dark Room", meta:["Performance","Audio-reactive","2024"],
-    venue:"MUTEK · 45 min · no color",
-    desc:"Live sound deforms a single geometric mesh until the room forgets its walls. Forty-five minutes, pure black and white.", seed:83 },
+  { han:"ND", en:"NDIS Support Platform", meta:["Web & Mobile","Healthcare","2025"],
+    venue:"empowerliving.com.au · Australia",
+    desc:"Production platform for the National Disability Insurance Scheme — participant management, service bookings, ShiftCare workforce integration, and zero-downtime CI/CD on AWS.", seed:11 },
+  { han:"SM", en:"SMS & Form System", meta:["Automation","Webhooks","2024"],
+    venue:"JotForm · SMS API · +61",
+    desc:"Smart SMS automation with JotForm e-signature, a dynamic form builder, and real-time webhook delivery — signature to delivered in under 200ms.", seed:29 },
+  { han:"FT", en:"Fitness Tracker", meta:["Mobile","React Native","2024"],
+    venue:"Cross-platform · iOS & Android",
+    desc:"A cross-platform fitness app — workout plans, analytics, exercise libraries, and trainer-client management built with React Native and Java.", seed:47 },
+  { han:"AT", en:"Workflow Automation", meta:["Backend","Python","2025"],
+    venue:"Form -> SMS -> DB -> Dashboard",
+    desc:"End-to-end automation: a form submission triggers e-signature, SMS dispatch, a PostgreSQL write, and a live dashboard update — all in milliseconds.", seed:83 },
 ];
 
 /* ---------- build projects ---------- */
@@ -442,7 +448,7 @@ PROJECTS.forEach((p,i)=>{
 /* ---------- ghost characters in statement ---------- */
 (function(){
   const g = document.getElementById('ghosts');
-  const chars = ['衍','噪','形','镜','黑','屏','场','碎'];
+  const chars = ['<','>','/','{','}',';','*','#'];
   for(let i=0;i<8;i++){
     const s=document.createElement('span'); s.className='ghost';
     s.textContent=chars[i%chars.length];
